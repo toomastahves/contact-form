@@ -2,7 +2,7 @@
   color: rgb(137, 179, 214);
 }
 
-.flex {
+.contact {
   margin: 0 auto;
   display: flex;
   justify-content: center;
@@ -10,9 +10,8 @@
 }
 
 .justify {
+  width: 150%;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .form-label {
@@ -31,7 +30,7 @@
 
 .start-right {
   padding: 5px;
-  margin-left: 44%;
+  margin-left: 42%;
 }
 
 .submit-button {
@@ -40,5 +39,9 @@
   background-color: rgb(106, 118, 179);
   color: white;
   border-radius: 25px;
-  margin-left: 78%;
+  margin-left: 85%;
+}
+
+.error {
+  color: red;
 }
