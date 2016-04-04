@@ -8,9 +8,13 @@ export const Form = ({
   shippingAddressField3, handleShippingAddressField3Change, acceptTerms, handleAcceptTermsChange, handleSubmit
 }) => {
   let phoneOrEmailErrorMessage = '';
-  if(!phone.valid && !email.valid && (phone.touched || email.touched)) {
+  if((!phone.valid && !email.valid) && (phone.touched || email.touched)) {
     phoneOrEmailErrorMessage = 'Telefon või e-mail kohustuslik';
   }
+  const buttonToggle = name.valid && (phone.valid || email.valid) &&
+    billingAddressField1.valid && billingAddressField2.valid && billingAddressField3.valid && acceptTerms.valid &&
+    (!sameAddress ? shippingAddressField1.valid && shippingAddressField2.valid && shippingAddressField3.valid : true);
+
   return (
     <div className='contact'>
       <form onSubmit={handleSubmit}>
@@ -28,8 +32,14 @@ export const Form = ({
           <span className='start-right error'>{phoneOrEmailErrorMessage}</span>
         </div>
         <div className='justify'>
+          <span className='start-right error'>{phone.value && phone.error}</span>
+        </div>
+        <div className='justify'>
           <label className='form-label' htmlFor='phone'>{'Telefon'}</label>
           <input onChange={handlePhoneChange} value={phone.value} className='form-input' type='text' name='phone' id='phone' placeholder='+372' />
+        </div>
+        <div className='justify'>
+          <span className='start-right error'>{email.value && email.error}</span>
         </div>
         <div className='justify'>
           <label className='form-label' htmlFor='email'>{'E-post'}</label>
@@ -41,7 +51,7 @@ export const Form = ({
         </div>
         <div className='justify'>
           <label className='form-label' htmlFor='billing_address_field1'>{'Tänav, maja, korter'}</label>
-          <input onChange={handleBillingAddressField1Change} className='form-input' type='text' name='billing_address_field1' id='billing_address_field1' />
+          <input onChange={handleBillingAddressField1Change} value={billingAddressField1.value} className='form-input' type='text' name='billing_address_field1' id='billing_address_field1' />
         </div>
 
         <div className='justify'>
@@ -49,7 +59,7 @@ export const Form = ({
         </div>
         <div className='justify'>
           <label className='form-label' htmlFor='billing_address_field2'>{'Küla/alevik'}</label>
-          <input onChange={handleBillingAddressField2Change} className='form-input' type='text' name='billing_address_field2' id='billing_address_field2' />
+          <input onChange={handleBillingAddressField2Change} value={billingAddressField2.value} className='form-input' type='text' name='billing_address_field2' id='billing_address_field2' />
         </div>
 
         <div className='justify'>
@@ -57,7 +67,7 @@ export const Form = ({
         </div>
         <div className='justify'>
           <label className='form-label' htmlFor='billing_address_field3'>{'Linn/maakond'}</label>
-          <select onChange={handleBillingAddressField3Change} className='form-input' name='billing_address_field3' id='billing_address_field3' >
+          <select onChange={handleBillingAddressField3Change} value={billingAddressField3.value} className='form-input' name='billing_address_field3' id='billing_address_field3' >
             <option value=''>{'Vali'}</option>
             <option value='Harjumaa'>{'Harjumaa'}</option>
             <option value='Muu'>{'Muu'}</option>
@@ -80,7 +90,7 @@ export const Form = ({
             </div>
             <div className='justify'>
               <label className='form-label' htmlFor='shipping_address_field1'>{'Tänav, maja, korter'}</label>
-              <input onChange={handleShippingAddressField1Change} className='form-input' type='text' name='shipping_address_field1' id='shipping_address_field1' />
+              <input onChange={handleShippingAddressField1Change} value={shippingAddressField1.value} className='form-input' type='text' name='shipping_address_field1' id='shipping_address_field1' />
             </div>
 
             <div className='justify'>
@@ -88,7 +98,7 @@ export const Form = ({
             </div>
             <div className='justify'>
               <label className='form-label' htmlFor='shipping_address_field2'>{'Küla/alevik'}</label>
-              <input onChange={handleShippingAddressField2Change} className='form-input' type='text' name='shipping_address_field2' id='shipping_address_field2' />
+              <input onChange={handleShippingAddressField2Change} value={shippingAddressField2.value} className='form-input' type='text' name='shipping_address_field2' id='shipping_address_field2' />
             </div>
 
             <div className='justify'>
@@ -96,7 +106,7 @@ export const Form = ({
             </div>
             <div className='justify'>
               <label className='form-label' htmlFor='shipping_address_field3'>{'Linn/maakond'}</label>
-              <select onChange={handleShippingAddressField3Change} className='form-input' name='shipping_address_field3' id='shipping_address_field3' >
+              <select onChange={handleShippingAddressField3Change} value={shippingAddressField3.value} className='form-input' name='shipping_address_field3' id='shipping_address_field3' >
                 <option value=''>{'Vali'}</option>
                 <option value='Harjumaa'>{'Harjumaa'}</option>
                 <option value='Muu'>{'Muu'}</option>
@@ -114,7 +124,7 @@ export const Form = ({
         </div>
 
         <div className='justify'>
-          <input className='submit-button' type='submit' value='Salvesta' />
+          <input disabled={buttonToggle} className='submit-button' type='submit' value='Salvesta' />
         </div>
 
       </form>

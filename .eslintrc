@@ -222,7 +222,7 @@
     "arrow-parens": 0,
     "arrow-spacing": 1,
     "constructor-super": 1,
-    "generator-star-spacing": 1,
+    "generator-star-spacing": [1, {"before": false, "after": true}],
     "no-confusing-arrow": 1,
     "no-class-assign": 0,
     "no-const-assign": 2,
@@ -274,7 +274,6 @@
     "react/sort-comp": 1,
     "react/wrap-multilines": 1,
 
-    "babel/generator-star-spacing": 1,
     "babel/array-bracket-spacing": 0,
     "babel/object-curly-spacing": 0,
     "babel/object-shorthand": 1,

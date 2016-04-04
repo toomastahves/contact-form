@@ -2,7 +2,7 @@ import {
   NAME_CHANGE, PHONE_CHANGE, EMAIL_CHANGE,
   BILLING_ADDRESS_FIELD1_CHANGE, BILLING_ADDRESS_FIELD2_CHANGE, BILLING_ADDRESS_FIELD3_CHANGE,
   SAME_ADDRESS_CHANGE, SHIPPING_ADDRESS_FIELD1_CHANGE, SHIPPING_ADDRESS_FIELD2_CHANGE,
-  SHIPPING_ADDRESS_FIELD3_CHANGE, ACCEPT_TERMS_CHANGE, SUBMIT_FORM
+  SHIPPING_ADDRESS_FIELD3_CHANGE, ACCEPT_TERMS_CHANGE
 } from '../constants/form';
 
 export const nameChange = (value) => {
@@ -29,7 +29,8 @@ export const phoneChange = (value) => {
     valid: true,
     touched: true
   };
-  if(isNaN(value) || value.length === 0) {
+  if(isNaN(value) || value.length < 5) {
+    phone.error = 'Telefoninumber pole korrektne';
     phone.valid = false;
   }
   return {
@@ -48,6 +49,7 @@ export const emailChange = (value) => {
   // http://stackoverflow.com/a/46181
   const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   if(!re.test(value)) {
+    email.error = 'E-mail pole korrektne';
     email.valid = false;
   }
   return {
@@ -171,12 +173,5 @@ export const acceptTermsChange = (value) => {
   return {
     type: ACCEPT_TERMS_CHANGE,
     acceptTerms
-  };
-};
-
-export const submitForm = (form) => {
-  return {
-    type: SUBMIT_FORM,
-    form
   };
 };

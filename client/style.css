@@ -3,9 +3,8 @@
 }
 
 .contact {
-  margin: 0 auto;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   background-color: rgb(237, 234, 230);
 }
 
@@ -40,6 +39,10 @@
   color: white;
   border-radius: 25px;
   margin-left: 85%;
+}
+
+.submit-button:disabled {
+  background-color: rgb(180, 180, 182);
 }
 
 .error {

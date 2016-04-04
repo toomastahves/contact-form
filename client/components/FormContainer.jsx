@@ -5,8 +5,9 @@ import {
   nameChange, phoneChange, emailChange,
   billingAddressField1Change, billingAddressField2Change, billingAddressField3Change,
   sameAddressChange, shippingAddressField1Change, shippingAddressField2Change,
-  shippingAddressField3Change, acceptTermsChange, submitForm
+  shippingAddressField3Change, acceptTermsChange
  } from '../actions/form';
+import { submitForm } from '../actions/api';
 
 export const FormContainer = ({
   name, phone, email, dispatch,
@@ -58,8 +59,7 @@ export const FormContainer = ({
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target);
-    dispatch(submitForm());
+    dispatch(submitForm(e.target));
   };
   return (
     <Form
