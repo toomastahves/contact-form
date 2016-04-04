@@ -5,7 +5,7 @@ export const Form = ({
   billingAddressField1, handleBillingAddressField1Change, billingAddressField2, handleBillingAddressField2Change,
   billingAddressField3, handleBillingAddressField3Change, sameAddress, handleSameAddressChange,
   shippingAddressField1, handleShippingAddressField1Change, shippingAddressField2, handleShippingAddressField2Change,
-  shippingAddressField3, handleShippingAddressField3Change, acceptTerms, handleAcceptTermsChange
+  shippingAddressField3, handleShippingAddressField3Change, acceptTerms, handleAcceptTermsChange, handleSubmit
 }) => {
   let phoneOrEmailErrorMessage = '';
   if(!phone.valid && !email.valid && (phone.touched || email.touched)) {
@@ -13,7 +13,7 @@ export const Form = ({
   }
   return (
     <div className='contact'>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className='title justify start-right'>{'Kontaktandmed'}</div>
 
         <div className='justify'>
@@ -21,7 +21,7 @@ export const Form = ({
         </div>
         <div className='justify'>
           <label className='form-label' htmlFor='name'>{'Ees- ja perenimi'}</label>
-          <input onChange={handleNameChange} className='form-input' type='text' name='name' id='name' />
+          <input onChange={handleNameChange} value={name.value} className='form-input' type='text' name='name' id='name' />
         </div>
 
         <div className='justify'>
@@ -29,11 +29,11 @@ export const Form = ({
         </div>
         <div className='justify'>
           <label className='form-label' htmlFor='phone'>{'Telefon'}</label>
-          <input onChange={handlePhoneChange} className='form-input' type='text' name='phone' id='phone' placeholder='+372' />
+          <input onChange={handlePhoneChange} value={phone.value} className='form-input' type='text' name='phone' id='phone' placeholder='+372' />
         </div>
         <div className='justify'>
           <label className='form-label' htmlFor='email'>{'E-post'}</label>
-          <input onChange={handleEmailChange} className='form-input' type='text' name='email' id='email' />
+          <input onChange={handleEmailChange} value={email.value} className='form-input' type='text' name='email' id='email' />
         </div>
 
         <div className='justify'>
@@ -65,15 +65,15 @@ export const Form = ({
         </div>
 
         <div className='justify'>
-          <input onChange={handleSameAddressChange} checked={sameAddress === 'true'} value='true' className='start-right' type='radio' name='same_address' id='same_address_true' />
+          <input onChange={handleSameAddressChange} checked={sameAddress === true} value={true} className='start-right' type='radio' name='same_address' id='same_address_true' />
           <label htmlFor='same_address_true'>{'Kohaletoimetamine samale aadressile'}</label>
         </div>
         <div className='justify'>
-          <input onChange={handleSameAddressChange} checked={sameAddress === 'false'} value='false' className='start-right' type='radio' name='same_address' id='same_address_false' />
+          <input onChange={handleSameAddressChange} checked={sameAddress === false} value={false} className='start-right' type='radio' name='same_address' id='same_address_false' />
           <label htmlFor='same_address_false'>{'Kohaletoimetamine erinevale aadressile'}</label>
         </div>
 
-        {sameAddress === 'false' &&
+        {sameAddress === false &&
           <div>
             <div className='justify'>
               <span className='start-right error'>{shippingAddressField1.error}</span>
@@ -135,7 +135,7 @@ Form.propTypes = {
   handleBillingAddressField2Change: PropTypes.func.isRequired,
   billingAddressField3: PropTypes.object.isRequired,
   handleBillingAddressField3Change: PropTypes.func.isRequired,
-  sameAddress: PropTypes.string.isRequired,
+  sameAddress: PropTypes.bool.isRequired,
   handleSameAddressChange: PropTypes.func.isRequired,
   shippingAddressField1: PropTypes.object.isRequired,
   handleShippingAddressField1Change: PropTypes.func.isRequired,
@@ -144,7 +144,8 @@ Form.propTypes = {
   shippingAddressField3: PropTypes.object.isRequired,
   handleShippingAddressField3Change: PropTypes.func.isRequired,
   acceptTerms: PropTypes.object.isRequired,
-  handleAcceptTermsChange: PropTypes.func.isRequired
+  handleAcceptTermsChange: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired
 };
 
 export default Form;

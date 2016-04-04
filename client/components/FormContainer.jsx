@@ -5,7 +5,7 @@ import {
   nameChange, phoneChange, emailChange,
   billingAddressField1Change, billingAddressField2Change, billingAddressField3Change,
   sameAddressChange, shippingAddressField1Change, shippingAddressField2Change,
-  shippingAddressField3Change, acceptTermsChange
+  shippingAddressField3Change, acceptTermsChange, submitForm
  } from '../actions/form';
 
 export const FormContainer = ({
@@ -56,6 +56,11 @@ export const FormContainer = ({
   const handleAcceptTermsChange = (e) => {
     dispatch(acceptTermsChange(e.target.checked));
   };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(e.target);
+    dispatch(submitForm());
+  };
   return (
     <Form
       name={name}
@@ -80,6 +85,7 @@ export const FormContainer = ({
       handleShippingAddressField3Change={handleShippingAddressField3Change}
       acceptTerms={acceptTerms}
       handleAcceptTermsChange={handleAcceptTermsChange}
+      handleSubmit={handleSubmit}
     />
   );
 };
@@ -91,7 +97,7 @@ FormContainer.propTypes = {
   billingAddressField1: PropTypes.object.isRequired,
   billingAddressField2: PropTypes.object.isRequired,
   billingAddressField3: PropTypes.object.isRequired,
-  sameAddress: PropTypes.string.isRequired,
+  sameAddress: PropTypes.bool.isRequired,
   shippingAddressField1: PropTypes.object.isRequired,
   shippingAddressField2: PropTypes.object.isRequired,
   shippingAddressField3: PropTypes.object.isRequired,

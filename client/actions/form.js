@@ -2,7 +2,7 @@ import {
   NAME_CHANGE, PHONE_CHANGE, EMAIL_CHANGE,
   BILLING_ADDRESS_FIELD1_CHANGE, BILLING_ADDRESS_FIELD2_CHANGE, BILLING_ADDRESS_FIELD3_CHANGE,
   SAME_ADDRESS_CHANGE, SHIPPING_ADDRESS_FIELD1_CHANGE, SHIPPING_ADDRESS_FIELD2_CHANGE,
-  SHIPPING_ADDRESS_FIELD3_CHANGE, ACCEPT_TERMS_CHANGE
+  SHIPPING_ADDRESS_FIELD3_CHANGE, ACCEPT_TERMS_CHANGE, SUBMIT_FORM
 } from '../constants/form';
 
 export const nameChange = (value) => {
@@ -106,7 +106,7 @@ export const billingAddressField3Change = (value) => {
 export const sameAddressChange = (value) => {
   return {
     type: SAME_ADDRESS_CHANGE,
-    value
+    value: value === 'true'
   };
 };
 
@@ -164,8 +164,19 @@ export const acceptTermsChange = (value) => {
     valid: true,
     touched: true
   };
+  if(value === false) {
+    acceptTerms.error = 'Peab tingimustega nõustuma';
+    acceptTerms.valid = false;
+  }
   return {
     type: ACCEPT_TERMS_CHANGE,
     acceptTerms
+  };
+};
+
+export const submitForm = (form) => {
+  return {
+    type: SUBMIT_FORM,
+    form
   };
 };
