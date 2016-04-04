@@ -1,12 +1,26 @@
-import { put, call, fork, take, takeEvery } from 'redux-saga/effects';
-import { submitForm, submitSuccess, submitFailed } from '../actions/api';
+import { put, call, fork, take } from 'redux-saga/effects';
+import { submitSuccess, submitFailed } from '../actions/api';
 import { SUBMIT_FORM } from '../constants/form';
 
 // http://www.html5rocks.com/en/tutorials/es6/promises/
 function get(url, data) {
+  const formData = new FormData(data);
+  const obj = {
+    name: formData.get('name'),
+    phone: formData.get('phone'),
+    email: formData.get('email'),
+    billing_address_field1: formData.get('billing_address_field1'),
+    billing_address_field2: formData.get('billing_address_field2'),
+    billing_address_field3: formData.get('billing_address_field3'),
+    same_address: formData.get('same_address'),
+    shipping_address_field1: formData.get('shipping_address_field1'),
+    shipping_address_field2: formData.get('shipping_address_field2'),
+    shipping_address_field3: formData.get('shipping_address_field3')
+  };
   return new Promise((resolve, reject) => {
     const req = new XMLHttpRequest();
-    req.open('GET', url);
+    req.open('POST', url);
+    req.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
     req.onload = function() {
       if(req.status === 200) {
         resolve(req.response);
@@ -17,7 +31,7 @@ function get(url, data) {
     req.onerror = function() {
       reject(Error('Network error'));
     };
-    req.send();
+    req.send(JSON.stringify(obj));
   });
 }
 
@@ -33,9 +47,11 @@ export function* getEcho(data) {
 }
 
 function* watchFormSubmit() {
-  console.log('watching form submit');
-  const form = yield take(SUBMIT_FORM);
-  yield fork(getEcho, form.form);
+  while(true) {
+    console.log('watching form submit');
+    const form = yield take(SUBMIT_FORM);
+    yield fork(getEcho, form.form);
+  }
 }
 
 export default function* rootSaga() {

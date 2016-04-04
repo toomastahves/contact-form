@@ -6,7 +6,14 @@ const app = express();
 app.use(express.static('public'));
 
 app.use('/echo', (req, res) => {
-  res.status(200).json('echo');
+  let jsonString = '';
+  req.on('data', (data) => {
+    jsonString += data;
+  });
+  req.on('end', () => {
+    console.log(JSON.parse(jsonString));
+    res.status(200).send(jsonString);
+  });
 });
 
 const port = process.env.PORT || 3000;

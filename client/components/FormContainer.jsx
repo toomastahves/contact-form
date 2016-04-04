@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import Form from './Form';
+import Result from './Result';
 import { connect } from 'react-redux';
 import {
   nameChange, phoneChange, emailChange,
@@ -13,7 +14,7 @@ export const FormContainer = ({
   name, phone, email, dispatch,
   billingAddressField1, billingAddressField2, billingAddressField3,
   sameAddress, shippingAddressField1, shippingAddressField2, shippingAddressField3,
-  acceptTerms
+  acceptTerms, submitResult
 }) => {
   const handleNameChange = (e) => {
     e.preventDefault();
@@ -62,31 +63,34 @@ export const FormContainer = ({
     dispatch(submitForm(e.target));
   };
   return (
-    <Form
-      name={name}
-      handleNameChange={handleNameChange}
-      phone={phone}
-      handlePhoneChange={handlePhoneChange}
-      email={email}
-      handleEmailChange={handleEmailChange}
-      billingAddressField1={billingAddressField1}
-      handleBillingAddressField1Change={handleBillingAddressField1Change}
-      billingAddressField2={billingAddressField2}
-      handleBillingAddressField2Change={handleBillingAddressField2Change}
-      billingAddressField3={billingAddressField3}
-      handleBillingAddressField3Change={handleBillingAddressField3Change}
-      sameAddress={sameAddress}
-      handleSameAddressChange={handleSameAddressChange}
-      shippingAddressField1={shippingAddressField1}
-      handleShippingAddressField1Change={handleShippingAddressField1Change}
-      shippingAddressField2={shippingAddressField2}
-      handleShippingAddressField2Change={handleShippingAddressField2Change}
-      shippingAddressField3={shippingAddressField3}
-      handleShippingAddressField3Change={handleShippingAddressField3Change}
-      acceptTerms={acceptTerms}
-      handleAcceptTermsChange={handleAcceptTermsChange}
-      handleSubmit={handleSubmit}
-    />
+    <div>
+      <Form
+        name={name}
+        handleNameChange={handleNameChange}
+        phone={phone}
+        handlePhoneChange={handlePhoneChange}
+        email={email}
+        handleEmailChange={handleEmailChange}
+        billingAddressField1={billingAddressField1}
+        handleBillingAddressField1Change={handleBillingAddressField1Change}
+        billingAddressField2={billingAddressField2}
+        handleBillingAddressField2Change={handleBillingAddressField2Change}
+        billingAddressField3={billingAddressField3}
+        handleBillingAddressField3Change={handleBillingAddressField3Change}
+        sameAddress={sameAddress}
+        handleSameAddressChange={handleSameAddressChange}
+        shippingAddressField1={shippingAddressField1}
+        handleShippingAddressField1Change={handleShippingAddressField1Change}
+        shippingAddressField2={shippingAddressField2}
+        handleShippingAddressField2Change={handleShippingAddressField2Change}
+        shippingAddressField3={shippingAddressField3}
+        handleShippingAddressField3Change={handleShippingAddressField3Change}
+        acceptTerms={acceptTerms}
+        handleAcceptTermsChange={handleAcceptTermsChange}
+        handleSubmit={handleSubmit}
+      />
+      <Result submitResult={submitResult} />
+    </div>
   );
 };
 
@@ -102,6 +106,7 @@ FormContainer.propTypes = {
   shippingAddressField2: PropTypes.object.isRequired,
   shippingAddressField3: PropTypes.object.isRequired,
   acceptTerms: PropTypes.object.isRequired,
+  submitResult: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired
 };
 
@@ -117,7 +122,8 @@ const mapStateToProps = (state) => {
     shippingAddressField1: state.formReducer.shippingAddressField1,
     shippingAddressField2: state.formReducer.shippingAddressField2,
     shippingAddressField3: state.formReducer.shippingAddressField3,
-    acceptTerms: state.formReducer.acceptTerms
+    acceptTerms: state.formReducer.acceptTerms,
+    submitResult: state.formReducer.submitResult
   };
 };
 
