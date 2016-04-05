@@ -17,42 +17,33 @@ export const FormContainer = ({
   acceptTerms, submitResult
 }) => {
   const handleNameChange = (e) => {
-    e.preventDefault();
     dispatch(nameChange(e.target.value));
   };
   const handlePhoneChange = (e) => {
-    e.preventDefault();
     dispatch(phoneChange(e.target.value));
   };
   const handleEmailChange = (e) => {
-    e.preventDefault();
     dispatch(emailChange(e.target.value));
   };
   const handleBillingAddressField1Change = (e) => {
-    e.preventDefault();
     dispatch(billingAddressField1Change(e.target.value));
   };
   const handleBillingAddressField2Change = (e) => {
-    e.preventDefault();
     dispatch(billingAddressField2Change(e.target.value));
   };
   const handleBillingAddressField3Change = (e) => {
-    e.preventDefault();
     dispatch(billingAddressField3Change(e.target.value));
   };
   const handleSameAddressChange = (e) => {
     dispatch(sameAddressChange(e.target.value));
   };
   const handleShippingAddressField1Change = (e) => {
-    e.preventDefault();
     dispatch(shippingAddressField1Change(e.target.value));
   };
   const handleShippingAddressField2Change = (e) => {
-    e.preventDefault();
     dispatch(shippingAddressField2Change(e.target.value));
   };
   const handleShippingAddressField3Change = (e) => {
-    e.preventDefault();
     dispatch(shippingAddressField3Change(e.target.value));
   };
   const handleAcceptTermsChange = (e) => {

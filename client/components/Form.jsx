@@ -124,7 +124,7 @@ export const Form = ({
         </div>
 
         <div className='justify'>
-          <input disabled={buttonToggle} className='submit-button' type='submit' value='Salvesta' />
+          <input disabled={!buttonToggle} className='submit-button' type='submit' value='Salvesta' />
         </div>
 
       </form>
