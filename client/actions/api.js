@@ -1,9 +1,9 @@
 import { SUBMIT_FORM, SUBMIT_SUCCESS, SUBMIT_FAILED } from '../constants/api';
 
-export const submitForm = (form) => {
+export const submitForm = (data) => {
   return {
     type: SUBMIT_FORM,
-    form
+    data
   };
 };
 

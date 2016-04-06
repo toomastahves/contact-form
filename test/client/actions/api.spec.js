@@ -4,12 +4,12 @@ import * as actions from 'client/actions/api';
 
 describe('api actions', () => {
   it('tests submitForm action', () => {
-    const form = { name: 'name' };
+    const data = { name: 'name' };
     const expectedAction = {
       type: constants.SUBMIT_FORM,
-      form
+      data
     };
-    expect(actions.submitForm(form)).to.eql(expectedAction);
+    expect(actions.submitForm(data)).to.eql(expectedAction);
   });
   it('tests submitSuccess action', () => {
     const result = { name: 'name' };

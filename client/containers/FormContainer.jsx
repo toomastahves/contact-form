@@ -10,6 +10,7 @@ import {
  } from '../actions/form';
 import { submitForm } from '../actions/api';
 import { changeLanguage } from '../actions/l10n';
+import { convertFormToJSON } from '../services/helpers';
 
 export const FormContainer = ({
   name, phone, email, dispatch,
@@ -52,8 +53,9 @@ export const FormContainer = ({
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(submitForm(e.target));
+    dispatch(submitForm(convertFormToJSON(e.target)));
   };
+
   return (
     <div>
       <Form
