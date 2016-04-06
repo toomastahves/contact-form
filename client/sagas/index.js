@@ -5,18 +5,10 @@ import { SUBMIT_FORM } from '../constants/form';
 // http://www.html5rocks.com/en/tutorials/es6/promises/
 function get(url, data) {
   const formData = new FormData(data);
-  const obj = {
-    name: formData.get('name'),
-    phone: formData.get('phone'),
-    email: formData.get('email'),
-    billing_address_field1: formData.get('billing_address_field1'),
-    billing_address_field2: formData.get('billing_address_field2'),
-    billing_address_field3: formData.get('billing_address_field3'),
-    same_address: formData.get('same_address'),
-    shipping_address_field1: formData.get('shipping_address_field1'),
-    shipping_address_field2: formData.get('shipping_address_field2'),
-    shipping_address_field3: formData.get('shipping_address_field3')
-  };
+  const obj = {};
+  for(const key of formData.keys()) {
+    obj[key] = formData.get(key);
+  }
   return new Promise((resolve, reject) => {
     const req = new XMLHttpRequest();
     req.open('POST', url);
