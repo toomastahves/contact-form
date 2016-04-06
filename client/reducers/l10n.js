@@ -2,7 +2,7 @@ import { LANGUAGE_CHANGE } from '../constants/l10n';
 
 const initialState = {
   l10n: {},
-  language: 'EST'
+  language: ''
 };
 
 export const l10nReducer = (state = initialState, action) => {

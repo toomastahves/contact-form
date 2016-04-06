@@ -28,17 +28,17 @@ export const Form = ({
         </div>
 
         <div className='justify'>
-          <span className='start-right error'>{(!phone.valid && !email.valid) && (phone.touched || email.touched) && l10n.PHONE_AND_EMAIL_ERROR}</span>
+          <span className='start-right error'>{!phone.valid && !email.valid && (phone.touched || email.touched) && l10n.PHONE_AND_EMAIL_ERROR}</span>
         </div>
         <div className='justify'>
-          <span className='start-right error'>{(!phone.valid && !email.valid) && phone.touched && l10n.PHONE_ERROR}</span>
+          <span className='start-right error'>{!phone.valid && phone.touched && phone.value && l10n.PHONE_ERROR}</span>
         </div>
         <div className='justify'>
           <label className='form-label' htmlFor='phone'>{l10n.PHONE}</label>
           <input onChange={handlePhoneChange} value={phone.value} className='form-input' type='text' name='phone' id='phone' placeholder='+372' />
         </div>
         <div className='justify'>
-          <span className='start-right error'>{(!email.valid && !phone.valid) && email.touched && l10n.EMAIL_ERROR}</span>
+          <span className='start-right error'>{!email.valid && email.touched && email.value && l10n.EMAIL_ERROR}</span>
         </div>
         <div className='justify'>
           <label className='form-label' htmlFor='email'>{l10n.EMAIL}</label>
