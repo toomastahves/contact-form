@@ -2,7 +2,7 @@ import {
   NAME_CHANGE, PHONE_CHANGE, EMAIL_CHANGE,
   BILLING_ADDRESS_FIELD1_CHANGE, BILLING_ADDRESS_FIELD2_CHANGE, BILLING_ADDRESS_FIELD3_CHANGE,
   SAME_ADDRESS_CHANGE, SHIPPING_ADDRESS_FIELD1_CHANGE, SHIPPING_ADDRESS_FIELD2_CHANGE,
-  SHIPPING_ADDRESS_FIELD3_CHANGE, ACCEPT_TERMS_CHANGE, SUBMIT_FORM, SUBMIT_SUCCESS, SUBMIT_FAILED
+  SHIPPING_ADDRESS_FIELD3_CHANGE, ACCEPT_TERMS_CHANGE
 } from '../constants/form';
 
 const initialState = {
@@ -56,10 +56,7 @@ const initialState = {
     value: false,
     valid: false,
     touched: false
-  },
-  submitResult: {},
-  submitError: {},
-  submitting: false
+  }
 };
 
 export const formReducer = (state = initialState, action) => {
@@ -86,12 +83,6 @@ export const formReducer = (state = initialState, action) => {
       return Object.assign({}, state, { shippingAddressField3: action.shippingAddressField3 });
     case ACCEPT_TERMS_CHANGE:
       return Object.assign({}, state, { acceptTerms: action.acceptTerms });
-    case SUBMIT_FORM:
-      return Object.assign({}, state, { submitting: true });
-    case SUBMIT_SUCCESS:
-      return Object.assign({}, state, { submitResult: action.result, submitting: false });
-    case SUBMIT_FAILED:
-      return Object.assign({}, state, { submitError: action.error, submitting: false });
     default:
       return state;
   }

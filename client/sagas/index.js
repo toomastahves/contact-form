@@ -1,6 +1,6 @@
 import { put, call, fork, take } from 'redux-saga/effects';
 import { submitSuccess, submitFailed } from '../actions/api';
-import { SUBMIT_FORM } from '../constants/form';
+import { SUBMIT_FORM } from '../constants/api';
 
 // http://www.html5rocks.com/en/tutorials/es6/promises/
 function get(url, data) {

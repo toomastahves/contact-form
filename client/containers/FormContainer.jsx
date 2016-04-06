@@ -117,7 +117,7 @@ const mapStateToProps = (state) => {
     shippingAddressField2: state.formReducer.shippingAddressField2,
     shippingAddressField3: state.formReducer.shippingAddressField3,
     acceptTerms: state.formReducer.acceptTerms,
-    submitResult: state.formReducer.submitResult,
+    submitResult: state.apiReducer.submitResult,
     l10n: state.l10nReducer.l10n
   };
 };

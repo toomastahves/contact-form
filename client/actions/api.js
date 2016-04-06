@@ -1,4 +1,4 @@
-import { SUBMIT_FORM, SUBMIT_SUCCESS, SUBMIT_FAILED } from '../constants/form';
+import { SUBMIT_FORM, SUBMIT_SUCCESS, SUBMIT_FAILED } from '../constants/api';
 
 export const submitForm = (form) => {
   return {
