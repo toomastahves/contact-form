@@ -6,7 +6,6 @@ describe('form actions', () => {
   it('tests nameChange action with incorrect name', () => {
     const value = 'na';
     const name = {
-      error: 'Nimi liiga lühike',
       value,
       valid: false,
       touched: true
@@ -20,7 +19,6 @@ describe('form actions', () => {
   it('tests nameChange action correct name', () => {
     const value = 'name';
     const name = {
-      error: '',
       value,
       valid: true,
       touched: true
@@ -35,7 +33,6 @@ describe('form actions', () => {
   it('tests phoneChange action with incorrect phone number', () => {
     const value = '123';
     const phone = {
-      error: 'Telefoninumber pole korrektne',
       value,
       valid: false,
       touched: true
@@ -49,7 +46,6 @@ describe('form actions', () => {
   it('tests phoneChange action with correct phone number', () => {
     const value = '123456';
     const phone = {
-      error: '',
       value,
       valid: true,
       touched: true
