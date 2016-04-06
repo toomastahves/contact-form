@@ -3,15 +3,13 @@ import est from '../l10n/est';
 import eng from '../l10n/eng';
 
 export const changeLanguage = (language) => {
-  let l10n = {};
-  if(language === 'EST')
-    l10n = est;
-  if(language === 'ENG')
-    l10n = eng;
+  const languages = {};
+  languages.EST = est;
+  languages.ENG = eng;
 
   return {
     type: LANGUAGE_CHANGE,
     language,
-    l10n
+    l10n: languages[language]
   };
 };
