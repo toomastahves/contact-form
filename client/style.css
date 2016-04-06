@@ -5,7 +5,7 @@
 .contact {
   display: flex;
   justify-content: space-around;
-  background-color: rgb(237, 234, 230);
+  background-color: rgb(238, 238, 238);
 }
 
 .justify {
@@ -47,4 +47,9 @@
 
 .error {
   color: red;
+}
+
+.language {
+  margin: 5px;
+  cursor: pointer;
 }

@@ -14,7 +14,6 @@ const setup = () => {
 describe('tests App component', () => {
   it('renders correctly', () => {
     const { output } = setup();
-
     expect(output.type).to.eql('div');
   });
 });

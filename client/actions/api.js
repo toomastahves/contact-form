@@ -10,7 +10,7 @@ export const submitForm = (form) => {
 export const submitSuccess = (result) => {
   return {
     type: SUBMIT_SUCCESS,
-    result: JSON.parse(result)
+    result
   };
 };
 

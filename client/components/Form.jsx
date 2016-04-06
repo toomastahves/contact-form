@@ -5,12 +5,9 @@ export const Form = ({
   billingAddressField1, handleBillingAddressField1Change, billingAddressField2, handleBillingAddressField2Change,
   billingAddressField3, handleBillingAddressField3Change, sameAddress, handleSameAddressChange,
   shippingAddressField1, handleShippingAddressField1Change, shippingAddressField2, handleShippingAddressField2Change,
-  shippingAddressField3, handleShippingAddressField3Change, acceptTerms, handleAcceptTermsChange, handleSubmit
+  shippingAddressField3, handleShippingAddressField3Change, acceptTerms, handleAcceptTermsChange, handleSubmit, l10n
 }) => {
-  let phoneOrEmailErrorMessage = '';
-  if((!phone.valid && !email.valid) && (phone.touched || email.touched)) {
-    phoneOrEmailErrorMessage = 'Telefon või e-mail kohustuslik';
-  }
+
   const buttonToggle = name.valid && (phone.valid || email.valid) &&
     billingAddressField1.valid && billingAddressField2.valid && billingAddressField3.valid && acceptTerms.valid &&
     (!sameAddress ? shippingAddressField1.valid && shippingAddressField2.valid && shippingAddressField3.valid : true);
@@ -18,113 +15,113 @@ export const Form = ({
   return (
     <div className='contact'>
       <form onSubmit={handleSubmit}>
-        <div className='title justify start-right'>{'Kontaktandmed'}</div>
+        <div className='title justify start-right'>
+          {l10n.CONTACT_FORM_TITLE}
+        </div>
 
         <div className='justify'>
-          <span className='start-right error'>{name.error}</span>
+          <span className='start-right error'>{!name.valid && name.touched && l10n.NAME_ERROR}</span>
         </div>
         <div className='justify'>
-          <label className='form-label' htmlFor='name'>{'Ees- ja perenimi'}</label>
+          <label className='form-label' htmlFor='name'>{l10n.NAME}</label>
           <input onChange={handleNameChange} value={name.value} className='form-input' type='text' name='name' id='name' />
         </div>
 
         <div className='justify'>
-          <span className='start-right error'>{phoneOrEmailErrorMessage}</span>
+          <span className='start-right error'>{(!phone.valid && !email.valid) && (phone.touched || email.touched) && l10n.PHONE_AND_EMAIL_ERROR}</span>
         </div>
         <div className='justify'>
-          <span className='start-right error'>{phone.value && phone.error}</span>
+          <span className='start-right error'>{(!phone.valid && !email.valid) && phone.touched && l10n.PHONE_ERROR}</span>
         </div>
         <div className='justify'>
-          <label className='form-label' htmlFor='phone'>{'Telefon'}</label>
+          <label className='form-label' htmlFor='phone'>{l10n.PHONE}</label>
           <input onChange={handlePhoneChange} value={phone.value} className='form-input' type='text' name='phone' id='phone' placeholder='+372' />
         </div>
         <div className='justify'>
-          <span className='start-right error'>{email.value && email.error}</span>
+          <span className='start-right error'>{(!email.valid && !phone.valid) && email.touched && l10n.EMAIL_ERROR}</span>
         </div>
         <div className='justify'>
-          <label className='form-label' htmlFor='email'>{'E-post'}</label>
+          <label className='form-label' htmlFor='email'>{l10n.EMAIL}</label>
           <input onChange={handleEmailChange} value={email.value} className='form-input' type='text' name='email' id='email' />
         </div>
 
         <div className='justify'>
-          <span className='start-right error'>{billingAddressField1.error}</span>
+          <span className='start-right error'>{!billingAddressField1.valid && billingAddressField1.touched && l10n.ADDRESS_FIELD1_ERROR}</span>
         </div>
         <div className='justify'>
-          <label className='form-label' htmlFor='billing_address_field1'>{'Tänav, maja, korter'}</label>
+          <label className='form-label' htmlFor='billing_address_field1'>{l10n.ADDRESS_FIELD1}</label>
           <input onChange={handleBillingAddressField1Change} value={billingAddressField1.value} className='form-input' type='text' name='billing_address_field1' id='billing_address_field1' />
         </div>
 
         <div className='justify'>
-          <span className='start-right error'>{billingAddressField2.error}</span>
+          <span className='start-right error'>{!billingAddressField2.valid && billingAddressField2.touched && l10n.ADDRESS_FIELD2_ERROR}</span>
         </div>
         <div className='justify'>
-          <label className='form-label' htmlFor='billing_address_field2'>{'Küla/alevik'}</label>
+          <label className='form-label' htmlFor='billing_address_field2'>{l10n.ADDRESS_FIELD2}</label>
           <input onChange={handleBillingAddressField2Change} value={billingAddressField2.value} className='form-input' type='text' name='billing_address_field2' id='billing_address_field2' />
         </div>
 
         <div className='justify'>
-          <span className='start-right error'>{billingAddressField3.error}</span>
+          <span className='start-right error'>{!billingAddressField3.valid && billingAddressField3.touched && l10n.ADDRESS_FIELD3_ERROR}</span>
         </div>
         <div className='justify'>
-          <label className='form-label' htmlFor='billing_address_field3'>{'Linn/maakond'}</label>
+          <label className='form-label' htmlFor='billing_address_field3'>{l10n.ADDRESS_FIELD3}</label>
           <select onChange={handleBillingAddressField3Change} value={billingAddressField3.value} className='form-input' name='billing_address_field3' id='billing_address_field3' >
-            <option value=''>{'Vali'}</option>
+            <option value=''>{l10n.ADDRESS_FIELD3_EMPTY}</option>
             <option value='Harjumaa'>{'Harjumaa'}</option>
-            <option value='Muu'>{'Muu'}</option>
           </select>
         </div>
 
         <div className='justify'>
           <input onChange={handleSameAddressChange} checked={sameAddress === true} value={true} className='start-right' type='radio' name='same_address' id='same_address_true' />
-          <label htmlFor='same_address_true'>{'Kohaletoimetamine samale aadressile'}</label>
+          <label htmlFor='same_address_true'>{l10n.SAME_ADDRESS_TRUE}</label>
         </div>
         <div className='justify'>
           <input onChange={handleSameAddressChange} checked={sameAddress === false} value={false} className='start-right' type='radio' name='same_address' id='same_address_false' />
-          <label htmlFor='same_address_false'>{'Kohaletoimetamine erinevale aadressile'}</label>
+          <label htmlFor='same_address_false'>{l10n.SAME_ADDRESS_FALSE}</label>
         </div>
 
         {sameAddress === false &&
           <div>
             <div className='justify'>
-              <span className='start-right error'>{shippingAddressField1.error}</span>
+              <span className='start-right error'>{!shippingAddressField1.valid && shippingAddressField1.touched && l10n.ADDRESS_FIELD1_ERROR}</span>
             </div>
             <div className='justify'>
-              <label className='form-label' htmlFor='shipping_address_field1'>{'Tänav, maja, korter'}</label>
+              <label className='form-label' htmlFor='shipping_address_field1'>{l10n.ADDRESS_FIELD1}</label>
               <input onChange={handleShippingAddressField1Change} value={shippingAddressField1.value} className='form-input' type='text' name='shipping_address_field1' id='shipping_address_field1' />
             </div>
 
             <div className='justify'>
-              <span className='start-right error'>{shippingAddressField2.error}</span>
+              <span className='start-right error'>{!shippingAddressField2.valid && shippingAddressField2.touched && l10n.ADDRESS_FIELD2_ERROR}</span>
             </div>
             <div className='justify'>
-              <label className='form-label' htmlFor='shipping_address_field2'>{'Küla/alevik'}</label>
+              <label className='form-label' htmlFor='shipping_address_field2'>{l10n.ADDRESS_FIELD2}</label>
               <input onChange={handleShippingAddressField2Change} value={shippingAddressField2.value} className='form-input' type='text' name='shipping_address_field2' id='shipping_address_field2' />
             </div>
 
             <div className='justify'>
-              <span className='start-right error'>{shippingAddressField3.error}</span>
+              <span className='start-right error'>{!shippingAddressField3.valid && shippingAddressField3.touched && l10n.ADDRESS_FIELD3_ERROR}</span>
             </div>
             <div className='justify'>
-              <label className='form-label' htmlFor='shipping_address_field3'>{'Linn/maakond'}</label>
+              <label className='form-label' htmlFor='shipping_address_field3'>{l10n.ADDRESS_FIELD3}</label>
               <select onChange={handleShippingAddressField3Change} value={shippingAddressField3.value} className='form-input' name='shipping_address_field3' id='shipping_address_field3' >
-                <option value=''>{'Vali'}</option>
+                <option value=''>{l10n.ADDRESS_FIELD3_EMPTY}</option>
                 <option value='Harjumaa'>{'Harjumaa'}</option>
-                <option value='Muu'>{'Muu'}</option>
               </select>
             </div>
           </div>
         }
 
         <div className='justify'>
-          <span className='start-right error'>{acceptTerms.error}</span>
+          <span className='start-right error'>{!acceptTerms.valid && acceptTerms.touched && l10n.ACCEPT_TERMS_ERROR}</span>
         </div>
         <div className='justify'>
           <input onChange={handleAcceptTermsChange} checked={acceptTerms.value} className='start-right' id='agree_terms' name='agree_terms' type='checkbox' />
-          <label htmlFor='agree_terms'>{'Olen tingimustega tutvunud'}</label>
+          <label htmlFor='agree_terms'>{l10n.ACCEPT_TERMS}</label>
         </div>
 
         <div className='justify'>
-          <input disabled={!buttonToggle} className='submit-button' type='submit' value='Salvesta' />
+          <input disabled={!buttonToggle} className='submit-button' type='submit' value={l10n.SAVE_BUTTON} />
         </div>
 
       </form>
@@ -155,7 +152,8 @@ Form.propTypes = {
   handleShippingAddressField3Change: PropTypes.func.isRequired,
   acceptTerms: PropTypes.object.isRequired,
   handleAcceptTermsChange: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired
+  handleSubmit: PropTypes.func.isRequired,
+  l10n: PropTypes.object.isRequired
 };
 
 export default Form;

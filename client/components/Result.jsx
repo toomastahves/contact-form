@@ -1,21 +1,20 @@
 import React, { PropTypes } from 'react';
 
-export const Result = ({ submitResult }) => {
+export const Result = ({ submitResult, l10n }) => {
   return(
     <div>
       <table>
         <thead>
           <tr>
-            <th>{'Nimi'}</th>
-            <th>{'Telefon'}</th>
-            <th>{'E-post'}</th>
-            <th>{'Tänav, maja, korter'}</th>
-            <th>{'Küla/alevik'}</th>
-            <th>{'Linn/maakond'}</th>
-            <th>{'Sama aadress'}</th>
-            <th>{'Tänav, maja, korter'}</th>
-            <th>{'Küla/alevik'}</th>
-            <th>{'Linn/maakond'}</th>
+            <th>{l10n.NAME}</th>
+            <th>{l10n.PHONE}</th>
+            <th>{l10n.EMAIL}</th>
+            <th>{l10n.ADDRESS_FIELD1}</th>
+            <th>{l10n.ADDRESS_FIELD2}</th>
+            <th>{l10n.ADDRESS_FIELD3}</th>
+            <th>{l10n.ADDRESS_FIELD1}</th>
+            <th>{l10n.ADDRESS_FIELD2}</th>
+            <th>{l10n.ADDRESS_FIELD3}</th>
           </tr>
         </thead>
         <tbody>
@@ -26,7 +25,6 @@ export const Result = ({ submitResult }) => {
             <td>{submitResult.billing_address_field1}</td>
             <td>{submitResult.billing_address_field2}</td>
             <td>{submitResult.billing_address_field3}</td>
-            <td>{submitResult.same_address}</td>
             <td>{submitResult.shipping_address_field1}</td>
             <td>{submitResult.shipping_address_field2}</td>
             <td>{submitResult.shipping_address_field3}</td>
@@ -38,7 +36,8 @@ export const Result = ({ submitResult }) => {
 };
 
 Result.propTypes = {
-  submitResult: PropTypes.object.isRequired
+  submitResult: PropTypes.object.isRequired,
+  l10n: PropTypes.object.isRequired
 };
 
 export default Result;

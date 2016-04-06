@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
-import Form from './Form';
-import Result from './Result';
+import Form from '../components/Form';
+import Result from '../components/Result';
 import { connect } from 'react-redux';
 import {
   nameChange, phoneChange, emailChange,
@@ -9,12 +9,13 @@ import {
   shippingAddressField3Change, acceptTermsChange
  } from '../actions/form';
 import { submitForm } from '../actions/api';
+import { changeLanguage } from '../actions/l10n';
 
 export const FormContainer = ({
   name, phone, email, dispatch,
   billingAddressField1, billingAddressField2, billingAddressField3,
   sameAddress, shippingAddressField1, shippingAddressField2, shippingAddressField3,
-  acceptTerms, submitResult
+  acceptTerms, submitResult, l10n
 }) => {
   const handleNameChange = (e) => {
     dispatch(nameChange(e.target.value));
@@ -79,8 +80,9 @@ export const FormContainer = ({
         acceptTerms={acceptTerms}
         handleAcceptTermsChange={handleAcceptTermsChange}
         handleSubmit={handleSubmit}
+        l10n={l10n}
       />
-      <Result submitResult={submitResult} />
+      <Result submitResult={submitResult} l10n={l10n} />
     </div>
   );
 };
@@ -98,6 +100,7 @@ FormContainer.propTypes = {
   shippingAddressField3: PropTypes.object.isRequired,
   acceptTerms: PropTypes.object.isRequired,
   submitResult: PropTypes.object.isRequired,
+  l10n: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired
 };
 
@@ -114,8 +117,14 @@ const mapStateToProps = (state) => {
     shippingAddressField2: state.formReducer.shippingAddressField2,
     shippingAddressField3: state.formReducer.shippingAddressField3,
     acceptTerms: state.formReducer.acceptTerms,
-    submitResult: state.formReducer.submitResult
+    submitResult: state.formReducer.submitResult,
+    l10n: state.l10nReducer.l10n
   };
 };
 
-export default connect(mapStateToProps)(FormContainer);
+const mapDispatchToProps = (dispatch) => {
+  dispatch(changeLanguage('EST'));
+  return { dispatch };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(FormContainer);

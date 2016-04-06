@@ -8,62 +8,52 @@ import {
 const initialState = {
   name: {
     value: '',
-    error: '',
     valid: false,
     touched: false
   },
   phone: {
     value: '',
-    error: '',
     valid: false,
     touched: false
   },
   email: {
     value: '',
-    error: '',
     valid: false,
     touched: false
   },
   billingAddressField1: {
     value: '',
-    error: '',
     valid: false,
     touched: false
   },
   billingAddressField2: {
     value: '',
-    error: '',
     valid: true,
     touched: false
   },
   billingAddressField3: {
     value: '',
-    error: '',
     valid: false,
     touched: false
   },
   sameAddress: true,
   shippingAddressField1: {
     value: '',
-    error: '',
     valid: false,
     touched: false
   },
   shippingAddressField2: {
     value: '',
-    error: '',
     valid: true,
     touched: false
   },
   shippingAddressField3: {
     value: '',
-    error: '',
     valid: false,
     touched: false
   },
   acceptTerms: {
     value: false,
-    error: '',
     valid: false,
     touched: false
   },

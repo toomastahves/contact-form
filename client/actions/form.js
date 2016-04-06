@@ -7,13 +7,11 @@ import {
 
 export const nameChange = (value) => {
   const name = {
-    error: '',
     value,
     valid: true,
     touched: true
   };
   if(value.length < 3) {
-    name.error = 'Nimi liiga lühike';
     name.valid = false;
   }
   return {
@@ -24,13 +22,11 @@ export const nameChange = (value) => {
 
 export const phoneChange = (value) => {
   const phone = {
-    error: '',
     value,
     valid: true,
     touched: true
   };
   if(isNaN(value) || value.length < 5) {
-    phone.error = 'Telefoninumber pole korrektne';
     phone.valid = false;
   }
   return {
@@ -41,7 +37,6 @@ export const phoneChange = (value) => {
 
 export const emailChange = (value) => {
   const email = {
-    error: '',
     value,
     valid: true,
     touched: true
@@ -49,7 +44,6 @@ export const emailChange = (value) => {
   // http://stackoverflow.com/a/46181
   const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   if(!re.test(value)) {
-    email.error = 'E-mail pole korrektne';
     email.valid = false;
   }
   return {
@@ -60,13 +54,11 @@ export const emailChange = (value) => {
 
 export const billingAddressField1Change = (value) => {
   const billingAddressField1 = {
-    error: '',
     value,
     valid: true,
     touched: true
   };
   if(value.length === 0) {
-    billingAddressField1.error = 'Kohustuslik väli';
     billingAddressField1.valid = false;
   }
   return {
@@ -77,7 +69,6 @@ export const billingAddressField1Change = (value) => {
 
 export const billingAddressField2Change = (value) => {
   const billingAddressField2 = {
-    error: '',
     value,
     valid: true,
     touched: true
@@ -90,13 +81,11 @@ export const billingAddressField2Change = (value) => {
 
 export const billingAddressField3Change = (value) => {
   const billingAddressField3 = {
-    error: '',
     value,
     valid: true,
     touched: true
   };
   if(value.length === 0) {
-    billingAddressField3.error = 'Kohustuslik väli';
     billingAddressField3.valid = false;
   }
   return {
@@ -114,13 +103,11 @@ export const sameAddressChange = (value) => {
 
 export const shippingAddressField1Change = (value) => {
   const shippingAddressField1 = {
-    error: '',
     value,
     valid: true,
     touched: true
   };
   if(value.length === 0) {
-    shippingAddressField1.error = 'Kohustuslik väli';
     shippingAddressField1.valid = false;
   }
   return {
@@ -131,7 +118,6 @@ export const shippingAddressField1Change = (value) => {
 
 export const shippingAddressField2Change = (value) => {
   const shippingAddressField2 = {
-    error: '',
     value,
     valid: true,
     touched: true
@@ -144,13 +130,11 @@ export const shippingAddressField2Change = (value) => {
 
 export const shippingAddressField3Change = (value) => {
   const shippingAddressField3 = {
-    error: '',
     value,
     valid: true,
     touched: true
   };
   if(value.length === 0) {
-    shippingAddressField3.error = 'Kohustuslik väli';
     shippingAddressField3.valid = false;
   }
   return {
@@ -161,13 +145,11 @@ export const shippingAddressField3Change = (value) => {
 
 export const acceptTermsChange = (value) => {
   const acceptTerms = {
-    error: '',
     value,
     valid: true,
     touched: true
   };
   if(value === false) {
-    acceptTerms.error = 'Peab tingimustega nõustuma';
     acceptTerms.valid = false;
   }
   return {

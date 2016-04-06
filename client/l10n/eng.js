@@ -1,0 +1,22 @@
+export default {
+  CONTACT_FORM_TITLE: 'Contact form',
+  NAME: 'First- and last name',
+  NAME_ERROR: 'Name too short',
+  PHONE: 'Phone',
+  PHONE_ERROR: 'Phone not correct',
+  EMAIL: 'E-mail',
+  EMAIL_ERROR: 'E-mail not correct',
+  PHONE_AND_EMAIL_ERROR: 'Phone or e-mail necessary',
+  ADDRESS_FIELD1: 'Street',
+  ADDRESS_FIELD1_ERROR: 'Field necessary',
+  ADDRESS_FIELD2: 'Village',
+  ADDRESS_FIELD2_ERROR: '',
+  ADDRESS_FIELD3: 'City',
+  ADDRESS_FIELD3_EMPTY: 'Pick',
+  ADDRESS_FIELD3_ERROR: 'Field necessary',
+  SAME_ADDRESS_TRUE: 'Shipping address same as billing',
+  SAME_ADDRESS_FALSE: 'Shipping address different from billing',
+  ACCEPT_TERMS: 'I accept terms',
+  ACCEPT_TERMS_ERROR: 'Must accept terms',
+  SAVE_BUTTON: 'Save'
+};

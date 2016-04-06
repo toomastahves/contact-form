@@ -23,7 +23,7 @@ function get(url, data) {
     req.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
     req.onload = function() {
       if(req.status === 200) {
-        resolve(req.response);
+        resolve(JSON.parse(req.response));
       } else {
         reject(Error(req.statusText));
       }
