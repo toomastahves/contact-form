@@ -5,6 +5,6 @@
 Run:
 ```
 npm install
-npm run start:dev
+npm run start
 http://localhost:1337/
 ```
