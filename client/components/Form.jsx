@@ -122,7 +122,7 @@ export const Form = ({
         </div>
 
         <div className='justify'>
-          <button type='submit' disabled={status} className='submit-button'>{l10n.SAVE_BUTTON}</button>
+          <button type='submit' disabled={!status} className='submit-button'>{l10n.SAVE_BUTTON}</button>
         </div>
 
       </form>

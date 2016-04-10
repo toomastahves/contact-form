@@ -8,11 +8,8 @@
     "test": "cross-env NODE_PATH=. NODE_ENV=test istanbul cover _mocha && codecov",
     "test:watch": "cross-env NODE_PATH=. mocha --watch",
     "run:prod": "npm run build:prod && npm run start:prod",
-    "build:prod": "NODE_ENV=production webpack --config webpack.config.prod.js",
-    "start:prod": "NODE_ENV=production node server/index.js"
-  },
-  "engines": {
-    "node": "5.9.1"
+    "build:prod": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
+    "start:prod": "cross-env NODE_ENV=production node server/index.js"
   },
   "repository": {
     "type": "git",
