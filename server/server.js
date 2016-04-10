@@ -11,8 +11,14 @@ app.use('/echo', (req, res) => {
     jsonString += data;
   });
   req.on('end', () => {
-    console.log(JSON.parse(jsonString));
-    res.status(200).send(jsonString);
+    const json = JSON.parse(jsonString);
+    if(json.same_address === 'true') {
+      json.shipping_address_field1 = json.billing_address_field1;
+      json.shipping_address_field2 = json.billing_address_field2;
+      json.shipping_address_field3 = json.billing_address_field3;
+    }
+    console.log(json);
+    res.status(200).send(json);
   });
 });
 
