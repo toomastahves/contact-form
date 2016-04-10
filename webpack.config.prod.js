@@ -1,5 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
+const precss = require('precss');
+const autoprefixer = require('autoprefixer');
 
 module.exports = {
   devtool: 'source-map',
@@ -31,9 +33,12 @@ module.exports = {
   module: {
     loaders: [
       { test: /\.jsx?$/, loaders: ['babel'], include: path.join(__dirname, 'client') },
-      { test: /\.css$/, loaders: ['style-loader', 'css-loader'] },
+      { test: /\.css$/, loaders: ['style-loader', 'css-loader', 'postcss-loader'] },
       { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader?limit=10000&minetype=application/font-woff' },
       { test: /\.(jpeg|jpg|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'file-loader' }
     ]
+  },
+  postcss: () => {
+    return [precss, autoprefixer];
   }
 };
