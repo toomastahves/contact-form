@@ -1,9 +1,7 @@
-body {
+html, body {
   font-family: arial;
-}
-
-.title {
-  color: rgb(137, 179, 214);
+  margin: 0;
+  padding: 0;
 }
 
 .contact {
@@ -58,6 +56,12 @@ body {
   cursor: pointer;
 }
 
+.title {
+  color: rgb(137, 179, 214);
+  padding: 5px;
+  margin-left: 55%;
+}
+
 table {
   margin: 0 auto;
   padding: 10px;
@@ -67,4 +71,29 @@ th {
   font-weight: normal;
   padding: 5px;
   background-color: rgb(231, 231, 231);
+}
+
+@keyframes rotate-forever {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.loading-spinner {
+  animation-duration: 0.75s;
+  animation-iteration-count: infinite;
+  animation-name: rotate-forever;
+  animation-timing-function: linear;
+  height: 20px;
+  width: 20px;
+  border: 5px solid #cbcbcb;
+  border-right-color: transparent;
+  border-radius: 50%;
+}
+.spinner-location {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
 }

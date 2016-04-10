@@ -8,6 +8,7 @@ export const Form = ({
   shippingAddressField3, handleShippingAddressField3Change, acceptTerms, handleAcceptTermsChange, handleSubmit, l10n
 }) => {
 
+  // TODO: find better place for this logic
   const status = name.valid && (phone.valid || email.valid) &&
     billingAddressField1.valid && billingAddressField2.valid && billingAddressField3.valid && acceptTerms.valid &&
     (!sameAddress ? shippingAddressField1.valid && shippingAddressField2.valid && shippingAddressField3.valid : true);
@@ -15,7 +16,7 @@ export const Form = ({
   return (
     <div className='contact'>
       <form onSubmit={handleSubmit}>
-        <div className='title justify start-right'>
+        <div className='title'>
           {l10n.CONTACT_FORM_TITLE}
         </div>
 
@@ -121,7 +122,7 @@ export const Form = ({
         </div>
 
         <div className='justify'>
-          <button type='submit' disabled={!status} className='submit-button'>{l10n.SAVE_BUTTON}</button>
+          <button type='submit' disabled={status} className='submit-button'>{l10n.SAVE_BUTTON}</button>
         </div>
 
       </form>

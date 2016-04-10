@@ -19,10 +19,6 @@ Sends form values to server
 Echoes back form values  
 
 ---
-### Issues
-CSS style does not look the same in all browsers  
-
----
 ### Todos
 Write more unit tests  
 Save form values automatically on change, add throttle and execute through saga  

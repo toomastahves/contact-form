@@ -16,7 +16,7 @@ export const FormContainer = ({
   name, phone, email, dispatch,
   billingAddressField1, billingAddressField2, billingAddressField3,
   sameAddress, shippingAddressField1, shippingAddressField2, shippingAddressField3,
-  acceptTerms, submitResult, l10n
+  acceptTerms, submitResult, submitting, l10n
 }) => {
   const handleNameChange = (e) => {
     dispatch(nameChange(e.target.value));
@@ -84,7 +84,7 @@ export const FormContainer = ({
         handleSubmit={handleSubmit}
         l10n={l10n}
       />
-      <Result submitResult={submitResult} l10n={l10n} />
+      <Result submitResult={submitResult} submitting={submitting} l10n={l10n} />
     </div>
   );
 };
@@ -102,6 +102,7 @@ FormContainer.propTypes = {
   shippingAddressField3: PropTypes.object.isRequired,
   acceptTerms: PropTypes.object.isRequired,
   submitResult: PropTypes.object.isRequired,
+  submitting: PropTypes.bool.isRequired,
   l10n: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired
 };
@@ -120,6 +121,7 @@ const mapStateToProps = (state) => {
     shippingAddressField3: state.formReducer.shippingAddressField3,
     acceptTerms: state.formReducer.acceptTerms,
     submitResult: state.apiReducer.submitResult,
+    submitting: state.apiReducer.submitting,
     l10n: state.l10nReducer.l10n
   };
 };
