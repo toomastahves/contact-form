@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon server/index.js",
-    "test": "cross-env NODE_PATH=. mocha",
+    "test": "cross-env NODE_PATH=. NODE_ENV=test istanbul cover _mocha && codecov",
     "test:watch": "cross-env NODE_PATH=. mocha --watch",
     "run:prod": "npm run build:prod && npm run start:prod",
     "build:prod": "NODE_ENV=production webpack --config webpack.config.prod.js",
@@ -28,9 +28,11 @@
   "devDependencies": {
     "babel-eslint": "^6.0.0",
     "chai": "^3.5.0",
+    "codecov": "^1.0.1",
     "eslint": "^2.5.3",
     "eslint-plugin-babel": "^3.1.0",
     "eslint-plugin-react": "^4.2.3",
+    "istanbul": "^1.0.0-alpha.2",
     "jsdom": "^8.3.0",
     "mocha": "^2.4.5",
     "nodemon": "^1.9.1",

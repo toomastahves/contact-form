@@ -1,15 +1,19 @@
+body {
+  font-family: arial;
+}
+
 .title {
   color: rgb(137, 179, 214);
 }
 
 .contact {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   background-color: rgb(238, 238, 238);
 }
 
 .justify {
-  width: 150%;
+  width: 500px;
   display: flex;
 }
 
@@ -29,7 +33,7 @@
 
 .start-right {
   padding: 5px;
-  margin-left: 42%;
+  margin-left: 40%;
 }
 
 .submit-button {
@@ -52,4 +56,15 @@
 .language {
   margin: 5px;
   cursor: pointer;
+}
+
+table {
+  margin: 0 auto;
+  padding: 10px;
+}
+
+th {
+  font-weight: normal;
+  padding: 5px;
+  background-color: rgb(231, 231, 231);
 }
