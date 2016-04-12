@@ -8,7 +8,7 @@ const appHistory = useRouterHistory(createHashHistory)({ queryKey: false });
 export const Routes = () => {
   return (
     <Router history={appHistory}>
-      <Route path='/' components={App} >
+      <Route path='/' components={App}>
         <IndexRoute component={App} />
       </Route>
     </Router>

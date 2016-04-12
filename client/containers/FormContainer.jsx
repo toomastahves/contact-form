@@ -8,7 +8,7 @@ import {
   sameAddressChange, shippingAddressField1Change, shippingAddressField2Change,
   shippingAddressField3Change, acceptTermsChange
  } from '../actions/form';
-import { submitForm } from '../actions/api';
+import { createContactRequest } from '../actions/api';
 import { convertFormToJSON, mapIfSameAddress } from '../services/helpers';
 
 export const FormContainer = ({
@@ -54,7 +54,7 @@ export const FormContainer = ({
     e.preventDefault();
     const json = convertFormToJSON(e.target);
     const mapped = mapIfSameAddress(json);
-    dispatch(submitForm(mapped));
+    dispatch(createContactRequest(mapped));
   };
 
   return (

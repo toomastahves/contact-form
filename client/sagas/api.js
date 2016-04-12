@@ -1,6 +1,6 @@
 import { put, call, fork, take } from 'redux-saga/effects';
-import { submitSuccess, submitFailed } from '../actions/api';
-import { SUBMIT_FORM } from '../constants/api';
+import { createContactSuccess, createContactFailed } from '../actions/api';
+import { CREATE_CONTACT_REQUEST } from '../constants/api';
 import { fetch } from '../services/helpers';
 
 export function* createContact(data) {
@@ -8,16 +8,16 @@ export function* createContact(data) {
   yield new Promise(resolve => setTimeout(resolve, 1000));
   try {
     const result = yield call(fetch, 'http://localhost:3000/contact', 'POST', data);
-    yield put(submitSuccess(result));
+    yield put(createContactSuccess(result));
   } catch(error) {
-    yield put(submitFailed(error));
+    yield put(createContactFailed(error));
   }
 }
 
-export function* watchFormSubmit() {
-  // watching form submit
+export function* watchCreateContact() {
+  // watching contact creation
   while(true) {
-    const form = yield take(SUBMIT_FORM);
+    const form = yield take(CREATE_CONTACT_REQUEST);
     yield fork(createContact, form.data);
   }
 }

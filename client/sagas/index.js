@@ -1,8 +1,8 @@
 import { fork } from 'redux-saga/effects';
-import { watchFormSubmit } from './api';
+import { watchCreateContact } from './api';
 
 export default function* rootSaga() {
   yield [
-    fork(watchFormSubmit)
+    fork(watchCreateContact)
   ];
 }

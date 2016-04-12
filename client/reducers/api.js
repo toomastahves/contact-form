@@ -1,4 +1,4 @@
-import { SUBMIT_FORM, SUBMIT_SUCCESS, SUBMIT_FAILED } from '../constants/api';
+import { CREATE_CONTACT_REQUEST, CREATE_CONTACT_SUCCESS, CREATE_CONTACT_FAILED } from '../constants/api';
 
 const initialState = {
   submitResult: {},
@@ -8,11 +8,11 @@ const initialState = {
 
 export const apiReducer = (state = initialState, action) => {
   switch(action.type) {
-    case SUBMIT_FORM:
+    case CREATE_CONTACT_REQUEST:
       return Object.assign({}, state, { submitting: true });
-    case SUBMIT_SUCCESS:
+    case CREATE_CONTACT_SUCCESS:
       return Object.assign({}, state, { submitResult: action.result, submitting: false });
-    case SUBMIT_FAILED:
+    case CREATE_CONTACT_FAILED:
       return Object.assign({}, state, { submitError: action.error, submitting: false });
     default:
       return state;

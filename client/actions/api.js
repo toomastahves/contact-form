@@ -1,22 +1,22 @@
-import { SUBMIT_FORM, SUBMIT_SUCCESS, SUBMIT_FAILED } from '../constants/api';
+import { CREATE_CONTACT_REQUEST, CREATE_CONTACT_SUCCESS, CREATE_CONTACT_FAILED } from '../constants/api';
 
-export const submitForm = (data) => {
+export const createContactRequest = (data) => {
   return {
-    type: SUBMIT_FORM,
+    type: CREATE_CONTACT_REQUEST,
     data
   };
 };
 
-export const submitSuccess = (result) => {
+export const createContactSuccess = (result) => {
   return {
-    type: SUBMIT_SUCCESS,
+    type: CREATE_CONTACT_SUCCESS,
     result
   };
 };
 
-export const submitFailed = (error) => {
+export const createContactFailed = (error) => {
   return {
-    type: SUBMIT_FAILED,
+    type: CREATE_CONTACT_FAILED,
     error
   };
 };
