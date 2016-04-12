@@ -17,4 +17,10 @@ L10nContainer.propTypes = {
   dispatch: PropTypes.func.isRequired
 };
 
-export default connect()(L10nContainer);
+
+const mapDispatchToProps = (dispatch) => {
+  dispatch(changeLanguage('ENG'));
+  return { dispatch };
+};
+
+export default connect(null, mapDispatchToProps)(L10nContainer);

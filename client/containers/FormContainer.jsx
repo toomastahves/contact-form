@@ -9,7 +9,6 @@ import {
   shippingAddressField3Change, acceptTermsChange
  } from '../actions/form';
 import { submitForm } from '../actions/api';
-import { changeLanguage } from '../actions/l10n';
 import { convertFormToJSON, mapIfSameAddress } from '../services/helpers';
 
 export const FormContainer = ({
@@ -128,9 +127,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  dispatch(changeLanguage('EST'));
-  return { dispatch };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(FormContainer);
+export default connect(mapStateToProps)(FormContainer);
