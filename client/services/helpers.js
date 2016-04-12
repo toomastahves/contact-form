@@ -8,14 +8,26 @@ export const convertFormToJSON = (form) => {
   return JSON.stringify(obj);
 };
 
+export const mapIfSameAddress = (data) => {
+  const json = JSON.parse(data);
+  if(json.same_address === 'true') {
+    return JSON.stringify(Object.assign({}, json, {
+      shipping_address_field1: json.billing_address_field1,
+      shipping_address_field2: json.billing_address_field2,
+      shipping_address_field3: json.billing_address_field3
+    }));
+  }
+  return JSON.stringify(json);
+};
+
 // http://www.html5rocks.com/en/tutorials/es6/promises/
-export const fetch = (url, data) => {
+export const fetch = (url, type, data) => {
   return new Promise((resolve, reject) => {
     const req = new XMLHttpRequest();
-    req.open('POST', url);
+    req.open(type, url);
     req.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
     req.onload = function() {
-      if(req.status === 200) {
+      if(req.status === 200 || req.status === 201) {
         resolve(JSON.parse(req.response));
       } else {
         reject(Error(req.statusText));
