@@ -22,11 +22,11 @@ export const mapIfSameAddress = (data) => {
 };
 
 // http://www.html5rocks.com/en/tutorials/es6/promises/
-export const fetch = (url, type, data) => {
-  console.log(`${SERVER_URI}${url}`);
+export const fetch = ({ path, type, data }) => {
+  console.log(`${SERVER_URI}${path}`);
   return new Promise((resolve, reject) => {
     const req = new XMLHttpRequest();
-    req.open(type, `${SERVER_URI}${url}`);
+    req.open(type, `${SERVER_URI}${path}`);
     req.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
     req.onload = function() {
       if(req.status === 200 || req.status === 201) {

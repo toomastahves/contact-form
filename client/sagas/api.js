@@ -7,7 +7,7 @@ export function* createContact(data) {
   // Increasing server response time
   yield new Promise(resolve => setTimeout(resolve, 1000));
   try {
-    const result = yield call(fetch, '/contact', 'POST', data);
+    const result = yield call(fetch, { path: '/contact', type: 'POST', data });
     yield put(createContactSuccess(result));
   } catch(error) {
     yield put(createContactFailed(error));
