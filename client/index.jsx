@@ -4,7 +4,7 @@ import 'babel-polyfill';
 import { Provider } from 'react-redux';
 import Routes from './routes/';
 import store from './store/';
-import './style.css';
+import './styles/index.css';
 
 const application = (
   <Provider store={store}>

@@ -1,0 +1,13 @@
+/**
+* Table style
+*/
+table {
+  margin: 0 auto;
+  padding: 10px;
+}
+
+th {
+  font-weight: normal;
+  padding: 5px;
+  background-color: rgb(231, 231, 231);
+}

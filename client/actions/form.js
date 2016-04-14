@@ -158,7 +158,6 @@ export const acceptTermsChange = (value) => {
   };
 };
 
-
 export const delegateHandleChange = (name, value) => {
   switch(name) {
     case 'name':
