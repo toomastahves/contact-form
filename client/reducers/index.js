@@ -4,9 +4,9 @@ import { formReducer } from './form';
 import { l10nReducer } from './l10n';
 
 const reducers = combineReducers({
+  l10nReducer,
   apiReducer,
-  formReducer,
-  l10nReducer
+  formReducer
 });
 
 export default reducers;

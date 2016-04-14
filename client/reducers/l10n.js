@@ -8,7 +8,7 @@ const initialState = {
 export const l10nReducer = (state = initialState, action) => {
   switch(action.type) {
     case LANGUAGE_CHANGE:
-      return Object.assign({}, state, { language: action.language, l10n: action.l10n });
+      return Object.assign({}, state, { ...action } );
     default:
       return state;
   }

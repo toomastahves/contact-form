@@ -21,11 +21,12 @@ body {
   color: rgb(255, 255, 255);
 }
 
-.menu {
+.header {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
   background-color: rgb(5, 5, 5);
   height: 50px;
-  display: flex;
-  justify-content: center;
 }
 
 .menu a {
@@ -33,4 +34,21 @@ body {
   color: rgb(255, 255, 255);
   font-size: 1.5em;
   padding: 10px;
+  display: inline-block;
+}
+
+/**
+* Language pick style
+*/
+.language span {
+  cursor: pointer;
+  color: white;
+  font-size: 1.5em;
+  padding: 10px;
+  display: inline-block;
+}
+
+.language span img {
+  height: auto;
+  width: 25px;
 }

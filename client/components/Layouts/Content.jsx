@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../Parts/Header';
+import MenuContainer from '../../containers/MenuContainer';
 import Footer from '../Parts/Footer';
 
 export const ContentLayout = (SubComponent) => {
@@ -8,7 +8,7 @@ export const ContentLayout = (SubComponent) => {
 
     return (
       <div>
-        <Header />
+        <MenuContainer />
         <SubComponent {...props} />
         <Footer />
       </div>

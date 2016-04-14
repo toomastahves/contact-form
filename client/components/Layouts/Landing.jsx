@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../Parts/Header';
+import MenuContainer from '../../containers/MenuContainer';
 import Info from '../Parts/Info';
 import Footer from '../Parts/Footer';
 
@@ -8,7 +8,7 @@ export const Landing = () => {
   const Sub = () => {
     return (
       <div>
-        <Header />
+        <MenuContainer />
         <Info />
         <Footer />
       </div>

@@ -1,8 +1,11 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 
 export const Footer = () => {
   return (
-    <div className='footer'>{'footer'}</div>
+    <div className='footer'>
+      <div>{'Toomas Tahves'}</div>
+      <div>{'2016 MIT'}</div>
+    </div>
   );
 };
 

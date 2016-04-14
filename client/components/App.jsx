@@ -1,17 +1,26 @@
 import React, { PropTypes } from 'react';
-import L10nContainer from '../containers/L10nContainer';
+import { connect } from 'react-redux';
+import { changeLanguage } from '../actions/l10n';
 
 export const App = (props) => {
   return (
     <div>
-      <L10nContainer />
       {props.children}
     </div>
   );
 };
 
 App.propTypes = {
+  dispatch: PropTypes.func.isRequired
+};
+
+const mapDispatchToProps = (dispatch) => {
+  dispatch(changeLanguage('ENG'));
+  return { dispatch };
+};
+
+App.propTypes = {
   children: PropTypes.object.isRequired
 };
 
-export default App;
+export default connect(null, mapDispatchToProps)(App);
