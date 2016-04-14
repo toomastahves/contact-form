@@ -157,3 +157,33 @@ export const acceptTermsChange = (value) => {
     acceptTerms
   };
 };
+
+
+export const delegateHandleChange = (name, value) => {
+  switch(name) {
+    case 'name':
+      return nameChange(value);
+    case 'phone':
+      return phoneChange(value);
+    case 'email':
+      return emailChange(value);
+    case 'billing_address_field1':
+      return billingAddressField1Change(value);
+    case 'billing_address_field2':
+      return billingAddressField2Change(value);
+    case 'billing_address_field3':
+      return billingAddressField3Change(value);
+    case 'same_address':
+      return sameAddressChange(value);
+    case 'shipping_address_field1':
+      return shippingAddressField1Change(value);
+    case 'shipping_address_field2':
+      return shippingAddressField2Change(value);
+    case 'shipping_address_field3':
+      return shippingAddressField3Change(value);
+    case 'agree_terms':
+      return acceptTermsChange(value);
+    default:
+      return;
+  }
+};
