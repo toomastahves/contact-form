@@ -13,7 +13,7 @@ export const Form = ({ handleChange, contact, handleSubmit, l10n }) => {
 
   return (
     <div className='container'>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} onChange={handleChange}>
 
         <div className='form-set'>
           <div className='title'>{l10n.CONTACT_FORM_TITLE}</div>
@@ -27,7 +27,7 @@ export const Form = ({ handleChange, contact, handleSubmit, l10n }) => {
             <label htmlFor='name'>{l10n.NAME}</label>
           </div>
           <div className='form-input'>
-            <input className='textinput' onChange={handleChange} value={name.value} type='text' name='name' id='name' />
+            <input className='textinput' value={name.value} type='text' name='name' id='name' />
           </div>
         </div>
 
@@ -42,7 +42,7 @@ export const Form = ({ handleChange, contact, handleSubmit, l10n }) => {
             <label htmlFor='phone'>{l10n.PHONE}</label>
           </div>
           <div className='form-input'>
-            <input className='textinput' onChange={handleChange} value={phone.value} type='text' name='phone' id='phone' placeholder='+372' />
+            <input className='textinput' value={phone.value} type='text' name='phone' id='phone' placeholder='+372' />
           </div>
         </div>
 
@@ -54,7 +54,7 @@ export const Form = ({ handleChange, contact, handleSubmit, l10n }) => {
             <label htmlFor='email'>{l10n.EMAIL}</label>
           </div>
           <div className='form-input'>
-            <input className='textinput' onChange={handleChange} value={email.value} type='text' name='email' id='email' />
+            <input className='textinput' value={email.value} type='text' name='email' id='email' />
           </div>
         </div>
 
@@ -66,7 +66,7 @@ export const Form = ({ handleChange, contact, handleSubmit, l10n }) => {
             <label htmlFor='billing_address_field1'>{l10n.ADDRESS_FIELD1}</label>
           </div>
           <div className='form-input'>
-            <input className='textinput' onChange={handleChange} value={billingAddressField1.value} type='text' name='billing_address_field1' id='billing_address_field1' />
+            <input className='textinput' value={billingAddressField1.value} type='text' name='billing_address_field1' id='billing_address_field1' />
           </div>
         </div>
 
@@ -78,7 +78,7 @@ export const Form = ({ handleChange, contact, handleSubmit, l10n }) => {
             <label htmlFor='billing_address_field2'>{l10n.ADDRESS_FIELD2}</label>
           </div>
           <div className='form-input'>
-            <input className='textinput' onChange={handleChange} value={billingAddressField2.value} type='text' name='billing_address_field2' id='billing_address_field2' />
+            <input className='textinput' value={billingAddressField2.value} type='text' name='billing_address_field2' id='billing_address_field2' />
           </div>
         </div>
 
@@ -90,7 +90,7 @@ export const Form = ({ handleChange, contact, handleSubmit, l10n }) => {
             <label htmlFor='billing_address_field3'>{l10n.ADDRESS_FIELD3}</label>
           </div>
           <div className='form-input'>
-            <select className='textinput' onChange={handleChange} value={billingAddressField3.value} name='billing_address_field3' id='billing_address_field3' >
+            <select className='textinput' value={billingAddressField3.value} name='billing_address_field3' id='billing_address_field3' >
               <option value=''>{l10n.ADDRESS_FIELD3_EMPTY}</option>
               <option value='Harjumaa'>{'Harjumaa'}</option>
             </select>
@@ -99,11 +99,11 @@ export const Form = ({ handleChange, contact, handleSubmit, l10n }) => {
 
         <div className='form-set address-pick'>
           <div>
-            <input onChange={handleChange} checked={sameAddress === true} value={true} className='start-right' type='radio' name='same_address' id='same_address_true' />
+            <input className='start-right' readOnly checked={sameAddress === true} value={true} type='radio' name='same_address' id='same_address_true' />
             <label htmlFor='same_address_true'>{l10n.SAME_ADDRESS_TRUE}</label>
           </div>
           <div>
-            <input onChange={handleChange} checked={sameAddress === false} value={false} className='start-right' type='radio' name='same_address' id='same_address_false' />
+            <input className='start-right' readOnly checked={sameAddress === false} value={false} type='radio' name='same_address' id='same_address_false' />
             <label htmlFor='same_address_false'>{l10n.SAME_ADDRESS_FALSE}</label>
           </div>
         </div>
@@ -118,7 +118,7 @@ export const Form = ({ handleChange, contact, handleSubmit, l10n }) => {
                 <label htmlFor='shipping_address_field1'>{l10n.ADDRESS_FIELD1}</label>
               </div>
               <div className='form-input'>
-                <input className='textinput' onChange={handleChange} value={shippingAddressField1.value} type='text' name='shipping_address_field1' id='shipping_address_field1' />
+                <input className='textinput' value={shippingAddressField1.value} type='text' name='shipping_address_field1' id='shipping_address_field1' />
               </div>
             </div>
 
@@ -130,7 +130,7 @@ export const Form = ({ handleChange, contact, handleSubmit, l10n }) => {
                 <label htmlFor='shipping_address_field2'>{l10n.ADDRESS_FIELD2}</label>
               </div>
               <div className='form-input'>
-                <input className='textinput' onChange={handleChange} value={shippingAddressField2.value} type='text' name='shipping_address_field2' id='shipping_address_field2' />
+                <input className='textinput' value={shippingAddressField2.value} type='text' name='shipping_address_field2' id='shipping_address_field2' />
               </div>
             </div>
 
@@ -142,7 +142,7 @@ export const Form = ({ handleChange, contact, handleSubmit, l10n }) => {
                 <label htmlFor='shipping_address_field3'>{l10n.ADDRESS_FIELD3}</label>
               </div>
               <div className='form-input'>
-                <select className='textinput' onChange={handleChange} value={shippingAddressField3.value} name='shipping_address_field3' id='shipping_address_field3' >
+                <select className='textinput' value={shippingAddressField3.value} name='shipping_address_field3' id='shipping_address_field3' >
                   <option value=''>{l10n.ADDRESS_FIELD3_EMPTY}</option>
                   <option value='Harjumaa'>{'Harjumaa'}</option>
                 </select>
@@ -156,7 +156,7 @@ export const Form = ({ handleChange, contact, handleSubmit, l10n }) => {
         </div>
         <div className='form-set accept-terms'>
           <div>
-            <input onChange={handleChange} checked={acceptTerms.value} id='agree_terms' name='agree_terms' type='checkbox' />
+            <input checked={acceptTerms.value} id='agree_terms' name='agree_terms' type='checkbox' />
             <label htmlFor='agree_terms'>{l10n.ACCEPT_TERMS}</label>
           </div>
         </div>
