@@ -14,115 +14,157 @@ export const Form = ({
     (!sameAddress ? shippingAddressField1.valid && shippingAddressField2.valid && shippingAddressField3.valid : true);
 
   return (
-    <div className='contact'>
+    <div className='container'>
       <form onSubmit={handleSubmit}>
-        <div className='title'>
-          {l10n.CONTACT_FORM_TITLE}
+
+        <div className='form-set'>
+          <div className='title'>{l10n.CONTACT_FORM_TITLE}</div>
         </div>
 
-        <div className='justify'>
-          <span className='start-right error'>{!name.valid && name.touched && l10n.NAME_ERROR}</span>
+        <div className='error'>
+          {!name.valid && name.touched && l10n.NAME_ERROR}
         </div>
-        <div className='justify'>
-          <label className='form-label' htmlFor='name'>{l10n.NAME}</label>
-          <input onChange={handleNameChange} value={name.value} className='form-input' type='text' name='name' id='name' />
-        </div>
-
-        <div className='justify'>
-          <span className='start-right error'>{!phone.valid && !email.valid && (phone.touched || email.touched) && l10n.PHONE_AND_EMAIL_ERROR}</span>
-        </div>
-        <div className='justify'>
-          <span className='start-right error'>{!phone.valid && phone.touched && phone.value && l10n.PHONE_ERROR}</span>
-        </div>
-        <div className='justify'>
-          <label className='form-label' htmlFor='phone'>{l10n.PHONE}</label>
-          <input onChange={handlePhoneChange} value={phone.value} className='form-input' type='text' name='phone' id='phone' placeholder='+372' />
-        </div>
-        <div className='justify'>
-          <span className='start-right error'>{!email.valid && email.touched && email.value && l10n.EMAIL_ERROR}</span>
-        </div>
-        <div className='justify'>
-          <label className='form-label' htmlFor='email'>{l10n.EMAIL}</label>
-          <input onChange={handleEmailChange} value={email.value} className='form-input' type='text' name='email' id='email' />
+        <div className='form-set'>
+          <div className='form-label'>
+            <label htmlFor='name'>{l10n.NAME}</label>
+          </div>
+          <div className='form-input'>
+            <input className='textinput' onChange={handleNameChange} value={name.value} type='text' name='name' id='name' />
+          </div>
         </div>
 
-        <div className='justify'>
-          <span className='start-right error'>{!billingAddressField1.valid && billingAddressField1.touched && l10n.ADDRESS_FIELD1_ERROR}</span>
+        <div className='error'>
+          {!phone.valid && !email.valid && (phone.touched || email.touched) && l10n.PHONE_AND_EMAIL_ERROR}
         </div>
-        <div className='justify'>
-          <label className='form-label' htmlFor='billing_address_field1'>{l10n.ADDRESS_FIELD1}</label>
-          <input onChange={handleBillingAddressField1Change} value={billingAddressField1.value} className='form-input' type='text' name='billing_address_field1' id='billing_address_field1' />
+        <div className='error'>
+          {!phone.valid && phone.touched && phone.value && l10n.PHONE_ERROR}
         </div>
-
-        <div className='justify'>
-          <span className='start-right error'>{!billingAddressField2.valid && billingAddressField2.touched && l10n.ADDRESS_FIELD2_ERROR}</span>
-        </div>
-        <div className='justify'>
-          <label className='form-label' htmlFor='billing_address_field2'>{l10n.ADDRESS_FIELD2}</label>
-          <input onChange={handleBillingAddressField2Change} value={billingAddressField2.value} className='form-input' type='text' name='billing_address_field2' id='billing_address_field2' />
-        </div>
-
-        <div className='justify'>
-          <span className='start-right error'>{!billingAddressField3.valid && billingAddressField3.touched && l10n.ADDRESS_FIELD3_ERROR}</span>
-        </div>
-        <div className='justify'>
-          <label className='form-label' htmlFor='billing_address_field3'>{l10n.ADDRESS_FIELD3}</label>
-          <select onChange={handleBillingAddressField3Change} value={billingAddressField3.value} className='form-input' name='billing_address_field3' id='billing_address_field3' >
-            <option value=''>{l10n.ADDRESS_FIELD3_EMPTY}</option>
-            <option value='Harjumaa'>{'Harjumaa'}</option>
-          </select>
+        <div className='form-set'>
+          <div className='form-label'>
+            <label htmlFor='phone'>{l10n.PHONE}</label>
+          </div>
+          <div className='form-input'>
+            <input className='textinput' onChange={handlePhoneChange} value={phone.value} type='text' name='phone' id='phone' placeholder='+372' />
+          </div>
         </div>
 
-        <div className='justify'>
-          <input onChange={handleSameAddressChange} checked={sameAddress === true} value={true} className='start-right' type='radio' name='same_address' id='same_address_true' />
-          <label htmlFor='same_address_true'>{l10n.SAME_ADDRESS_TRUE}</label>
+        <div className='error'>
+          {!email.valid && email.touched && email.value && l10n.EMAIL_ERROR}
         </div>
-        <div className='justify'>
-          <input onChange={handleSameAddressChange} checked={sameAddress === false} value={false} className='start-right' type='radio' name='same_address' id='same_address_false' />
-          <label htmlFor='same_address_false'>{l10n.SAME_ADDRESS_FALSE}</label>
+        <div className='form-set'>
+          <div className='form-label'>
+            <label htmlFor='email'>{l10n.EMAIL}</label>
+          </div>
+          <div className='form-input'>
+            <input className='textinput' onChange={handleEmailChange} value={email.value} type='text' name='email' id='email' />
+          </div>
+        </div>
+
+        <div className='error'>
+          {!billingAddressField1.valid && billingAddressField1.touched && l10n.ADDRESS_FIELD1_ERROR}
+        </div>
+        <div className='form-set'>
+          <div className='form-label'>
+            <label htmlFor='billing_address_field1'>{l10n.ADDRESS_FIELD1}</label>
+          </div>
+          <div className='form-input'>
+            <input className='textinput' onChange={handleBillingAddressField1Change} value={billingAddressField1.value} type='text' name='billing_address_field1' id='billing_address_field1' />
+          </div>
+        </div>
+
+        <div className='error'>
+          {!billingAddressField2.valid && billingAddressField2.touched && l10n.ADDRESS_FIELD2_ERROR}
+        </div>
+        <div className='form-set'>
+          <div className='form-label'>
+            <label htmlFor='billing_address_field2'>{l10n.ADDRESS_FIELD2}</label>
+          </div>
+          <div className='form-input'>
+            <input className='textinput' onChange={handleBillingAddressField2Change} value={billingAddressField2.value} type='text' name='billing_address_field2' id='billing_address_field2' />
+          </div>
+        </div>
+
+        <div className='error'>
+          {!billingAddressField3.valid && billingAddressField3.touched && l10n.ADDRESS_FIELD3_ERROR}
+        </div>
+        <div className='form-set'>
+          <div className='form-label'>
+            <label htmlFor='billing_address_field3'>{l10n.ADDRESS_FIELD3}</label>
+          </div>
+          <div className='form-input'>
+            <select className='textinput' onChange={handleBillingAddressField3Change} value={billingAddressField3.value} name='billing_address_field3' id='billing_address_field3' >
+              <option value=''>{l10n.ADDRESS_FIELD3_EMPTY}</option>
+              <option value='Harjumaa'>{'Harjumaa'}</option>
+            </select>
+          </div>
+        </div>
+
+        <div className='form-set address-pick'>
+          <div>
+            <input onChange={handleSameAddressChange} checked={sameAddress === true} value={true} className='start-right' type='radio' name='same_address' id='same_address_true' />
+            <label htmlFor='same_address_true'>{l10n.SAME_ADDRESS_TRUE}</label>
+          </div>
+          <div>
+            <input onChange={handleSameAddressChange} checked={sameAddress === false} value={false} className='start-right' type='radio' name='same_address' id='same_address_false' />
+            <label htmlFor='same_address_false'>{l10n.SAME_ADDRESS_FALSE}</label>
+          </div>
         </div>
 
         {sameAddress === false &&
           <div>
-            <div className='justify'>
-              <span className='start-right error'>{!shippingAddressField1.valid && shippingAddressField1.touched && l10n.ADDRESS_FIELD1_ERROR}</span>
+            <div className='error'>
+              {!shippingAddressField1.valid && shippingAddressField1.touched && l10n.ADDRESS_FIELD1_ERROR}
             </div>
-            <div className='justify'>
-              <label className='form-label' htmlFor='shipping_address_field1'>{l10n.ADDRESS_FIELD1}</label>
-              <input onChange={handleShippingAddressField1Change} value={shippingAddressField1.value} className='form-input' type='text' name='shipping_address_field1' id='shipping_address_field1' />
-            </div>
-
-            <div className='justify'>
-              <span className='start-right error'>{!shippingAddressField2.valid && shippingAddressField2.touched && l10n.ADDRESS_FIELD2_ERROR}</span>
-            </div>
-            <div className='justify'>
-              <label className='form-label' htmlFor='shipping_address_field2'>{l10n.ADDRESS_FIELD2}</label>
-              <input onChange={handleShippingAddressField2Change} value={shippingAddressField2.value} className='form-input' type='text' name='shipping_address_field2' id='shipping_address_field2' />
+            <div className='form-set'>
+              <div className='form-label'>
+                <label htmlFor='shipping_address_field1'>{l10n.ADDRESS_FIELD1}</label>
+              </div>
+              <div className='form-input'>
+                <input className='textinput' onChange={handleShippingAddressField1Change} value={shippingAddressField1.value} type='text' name='shipping_address_field1' id='shipping_address_field1' />
+              </div>
             </div>
 
-            <div className='justify'>
-              <span className='start-right error'>{!shippingAddressField3.valid && shippingAddressField3.touched && l10n.ADDRESS_FIELD3_ERROR}</span>
+            <div className='error'>
+              {!shippingAddressField2.valid && shippingAddressField2.touched && l10n.ADDRESS_FIELD2_ERROR}
             </div>
-            <div className='justify'>
-              <label className='form-label' htmlFor='shipping_address_field3'>{l10n.ADDRESS_FIELD3}</label>
-              <select onChange={handleShippingAddressField3Change} value={shippingAddressField3.value} className='form-input' name='shipping_address_field3' id='shipping_address_field3' >
-                <option value=''>{l10n.ADDRESS_FIELD3_EMPTY}</option>
-                <option value='Harjumaa'>{'Harjumaa'}</option>
-              </select>
+            <div className='form-set'>
+              <div className='form-label'>
+                <label htmlFor='shipping_address_field2'>{l10n.ADDRESS_FIELD2}</label>
+              </div>
+              <div className='form-input'>
+                <input className='textinput' onChange={handleShippingAddressField2Change} value={shippingAddressField2.value} type='text' name='shipping_address_field2' id='shipping_address_field2' />
+              </div>
+            </div>
+
+            <div className='error'>
+              {!shippingAddressField3.valid && shippingAddressField3.touched && l10n.ADDRESS_FIELD3_ERROR}
+            </div>
+            <div className='form-set'>
+              <div className='form-label'>
+                <label htmlFor='shipping_address_field3'>{l10n.ADDRESS_FIELD3}</label>
+              </div>
+              <div className='form-input'>
+                <select className='textinput' onChange={handleShippingAddressField3Change} value={shippingAddressField3.value} name='shipping_address_field3' id='shipping_address_field3' >
+                  <option value=''>{l10n.ADDRESS_FIELD3_EMPTY}</option>
+                  <option value='Harjumaa'>{'Harjumaa'}</option>
+                </select>
+              </div>
             </div>
           </div>
         }
 
-        <div className='justify'>
-          <span className='start-right error'>{!acceptTerms.valid && acceptTerms.touched && l10n.ACCEPT_TERMS_ERROR}</span>
+        <div className='error'>
+          {!acceptTerms.valid && acceptTerms.touched && l10n.ACCEPT_TERMS_ERROR}
         </div>
-        <div className='justify'>
-          <input onChange={handleAcceptTermsChange} checked={acceptTerms.value} className='start-right' id='agree_terms' name='agree_terms' type='checkbox' />
-          <label htmlFor='agree_terms'>{l10n.ACCEPT_TERMS}</label>
+        <div className='form-set accept-terms'>
+          <div>
+            <input onChange={handleAcceptTermsChange} checked={acceptTerms.value} id='agree_terms' name='agree_terms' type='checkbox' />
+            <label htmlFor='agree_terms'>{l10n.ACCEPT_TERMS}</label>
+          </div>
         </div>
 
-        <div className='justify'>
-          <button type='submit' disabled={!status} className='submit-button'>{l10n.SAVE_BUTTON}</button>
+        <div className='form-set'>
+          <button className='formbutton' type='submit' disabled={!status}>{l10n.SAVE_BUTTON}</button>
         </div>
 
       </form>
