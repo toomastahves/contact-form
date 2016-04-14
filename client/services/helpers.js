@@ -1,3 +1,4 @@
+import { SERVER_URI } from '../constants/api';
 
 export const convertFormToJSON = (form) => {
   const formData = new FormData(form);
@@ -24,7 +25,7 @@ export const mapIfSameAddress = (data) => {
 export const fetch = (url, type, data) => {
   return new Promise((resolve, reject) => {
     const req = new XMLHttpRequest();
-    req.open(type, url);
+    req.open(type, `${SERVER_URI}url`);
     req.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
     req.onload = function() {
       if(req.status === 200 || req.status === 201) {
