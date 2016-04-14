@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { changeLanguage } from '../actions/l10n';
-import ChangeLang from '../components/ChangeLang';
+import ChangeLang from '../components/Parts/ChangeLang';
 
 export const L10nContainer = ({ dispatch }) => {
   const handleLanguageChange = (e) => {
@@ -9,14 +9,13 @@ export const L10nContainer = ({ dispatch }) => {
     dispatch(changeLanguage(e.target.innerText));
   };
   return (
-    <ChangeLang handleLanguageChange={handleLanguageChange} />
+    null // <ChangeLang handleLanguageChange={handleLanguageChange} />
   );
 };
 
 L10nContainer.propTypes = {
   dispatch: PropTypes.func.isRequired
 };
-
 
 const mapDispatchToProps = (dispatch) => {
   dispatch(changeLanguage('ENG'));

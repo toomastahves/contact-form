@@ -1,37 +1,36 @@
-/**
-* Visual styles
-*/
+html {
+  position: relative;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
 body {
   background: #eee;
   font-family: arial;
   padding: 10px;
-}
-.title {
-  color: rgb(137, 179, 214);
-}
-.textinput {
-  border-radius: 25px;
-}
-.formbutton {
-  background-color: rgb(106, 118, 179);
-  font-size: 1em;
-  color: white;
-  border-radius: 25px;
-  padding: 5px;
-}
-.formbutton:disabled {
-  background-color: rgb(180, 180, 182);
-}
-.error {
-  color: rgb(217, 56, 27);
-  padding: 5px;
-}
-input, select {
-  box-sizing: content-box;
-  width: 100%;
-  padding: 5px;
+  margin: 0 0 100px;
 }
 
-input[type='radio'], input[type='checkbox'] {
-  width: auto;
+.footer {
+  position: absolute;
+  text-align: center;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+  background-color: rgb(5, 5, 5);
+  color: rgb(255, 255, 255);
+}
+
+.menu {
+  background-color: rgb(5, 5, 5);
+  height: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.menu a {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-size: 1.5em;
+  padding: 10px;
 }

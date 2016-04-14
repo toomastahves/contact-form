@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
-import Form from '../components/Form';
-import Result from '../components/Result';
+import Form from '../components/Parts/Form';
+import Result from '../components/Parts/Result';
 import { connect } from 'react-redux';
 import { delegateHandleChange } from '../actions/form';
 import { createContactRequest } from '../actions/api';
