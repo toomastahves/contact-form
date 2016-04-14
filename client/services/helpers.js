@@ -1,3 +1,4 @@
+import { SERVER_URI } from '../constants/api';
 
 export const convertFormToJSON = (form) => {
   const formData = new FormData(form);
@@ -22,10 +23,10 @@ export const mapIfSameAddress = (data) => {
 
 // http://www.html5rocks.com/en/tutorials/es6/promises/
 export const fetch = (url, type, data) => {
-  console.log(url);
+  console.log(`${SERVER_URI}${url}`);
   return new Promise((resolve, reject) => {
     const req = new XMLHttpRequest();
-    req.open(type, `${url}`);
+    req.open(type, `${SERVER_URI}${url}`);
     req.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
     req.onload = function() {
       if(req.status === 200 || req.status === 201) {
