@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react';
 
-export const Form = ({
-  handleChange, name, phone, email,
-  billingAddressField1, billingAddressField2, billingAddressField3, sameAddress,
-  shippingAddressField1, shippingAddressField2, shippingAddressField3, acceptTerms, handleSubmit, l10n
-}) => {
+export const Form = ({ handleChange, contact, handleSubmit, l10n }) => {
+  const {
+    name, phone, email, billingAddressField1, billingAddressField2, billingAddressField3,
+    sameAddress, shippingAddressField1, shippingAddressField2, shippingAddressField3, acceptTerms
+  } = contact;
 
   // TODO: find better place for this logic
   const status = name.valid && (phone.valid || email.valid) &&
@@ -172,17 +172,7 @@ export const Form = ({
 
 Form.propTypes = {
   handleChange: PropTypes.func.isRequired,
-  name: PropTypes.object.isRequired,
-  phone: PropTypes.object.isRequired,
-  email: PropTypes.object.isRequired,
-  billingAddressField1: PropTypes.object.isRequired,
-  billingAddressField2: PropTypes.object.isRequired,
-  billingAddressField3: PropTypes.object.isRequired,
-  sameAddress: PropTypes.bool.isRequired,
-  shippingAddressField1: PropTypes.object.isRequired,
-  shippingAddressField2: PropTypes.object.isRequired,
-  shippingAddressField3: PropTypes.object.isRequired,
-  acceptTerms: PropTypes.object.isRequired,
+  contact: PropTypes.object.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   l10n: PropTypes.object.isRequired
 };
