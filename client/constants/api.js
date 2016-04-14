@@ -1,4 +1,4 @@
-export const SERVER_URI = 'SERVER_URI';
+export const SERVER_URI = process.env.SERVER_URI || 'http://localhost:3000';
 export const CREATE_CONTACT_REQUEST = 'CREATE_CONTACT_REQUEST';
 export const CREATE_CONTACT_SUCCESS = 'CREATE_CONTACT_SUCCESS';
 export const CREATE_CONTACT_FAILED = 'CREATE_CONTACT_FAILED';
