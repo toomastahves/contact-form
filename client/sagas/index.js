@@ -1,8 +1,9 @@
 import { fork } from 'redux-saga/effects';
-import { watchCreateContact } from './api';
+import { watchCreateContact, watchListContacts } from './api';
 
 export default function* rootSaga() {
   yield [
-    fork(watchCreateContact)
+    fork(watchCreateContact),
+    fork(watchListContacts)
   ];
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import MenuContainer from '../../containers/MenuContainer';
+import MenuContainer from './MenuContainer';
 import Info from '../Parts/Info';
 import Footer from '../Parts/Footer';
 

@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
-import Header from '../components/Parts/Header';
+import Header from '../Parts/Header';
 import { connect } from 'react-redux';
-import { changeLanguage } from '../actions/l10n';
+import { changeLanguage } from '../../actions/l10n';
 
 export const MenuContainer = ({ dispatch }) => {
   const handleLanguageChange = (e) => {
