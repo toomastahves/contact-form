@@ -38,10 +38,13 @@ export function* updateContact() {
   if(!body)
     this.throw('Problems with request', 400);
 
-  const result = yield Contact.update({ _id: body._id }, body);
-  console.log(result);
+  let result = yield Contact.update({ _id: body._id }, body);
+
   if(!result.n)
     this.throw('Problems while updating.', 400);
+
+  if(result.n)
+    result = yield Contact.findOne({ _id: body._id }).exec();
 
   this.body = result;
 }

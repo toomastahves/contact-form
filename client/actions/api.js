@@ -70,10 +70,9 @@ export const updateContactRequest = (data, _id) => {
   };
 };
 export const updateContactSuccess = (contact) => {
-  const mapped = mapFormMetaDataToObject(contact);
   return {
     type: actions.UPDATE_CONTACT_SUCCESS,
-    contact: mapped
+    result: contact
   };
 };
 export const updateContactFailed = (error) => {
