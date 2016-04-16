@@ -1,0 +1,21 @@
+.view-object {
+  max-width: 100%;
+}
+
+.view-set {
+  display: flex;
+}
+
+.view-item {
+  flex: 1;
+  padding: 5px;
+}
+
+.view-item:nth-child(odd) {
+  text-align: right;
+}
+
+.view-button:last-child {
+  flex: 0.25;
+  margin-left: 50%;
+}

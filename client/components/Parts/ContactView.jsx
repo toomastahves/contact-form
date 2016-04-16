@@ -1,41 +1,54 @@
 import React, { PropTypes } from 'react';
 import Spinner from './Spinner';
 
-export const ContactView = ({ submitResult, fetching, l10n }) => {
-  return(
+export const ContactView = ({ submitResult, handleUpdate, fetching, l10n }) => {
+  return (
     <div>
       {fetching ?
         <div className='spinner-location'>
           <Spinner />
         </div> :
-        <table>
-          <thead>
-            <tr>
-              <th>{l10n.NAME}</th>
-              <th>{l10n.PHONE}</th>
-              <th>{l10n.EMAIL}</th>
-              <th>{l10n.ADDRESS_FIELD1}</th>
-              <th>{l10n.ADDRESS_FIELD2}</th>
-              <th>{l10n.ADDRESS_FIELD3}</th>
-              <th>{l10n.ADDRESS_FIELD1}</th>
-              <th>{l10n.ADDRESS_FIELD2}</th>
-              <th>{l10n.ADDRESS_FIELD3}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>{submitResult.name}</td>
-              <td>{submitResult.phone}</td>
-              <td>{submitResult.email}</td>
-              <td>{submitResult.billing_address_field1}</td>
-              <td>{submitResult.billing_address_field2}</td>
-              <td>{submitResult.billing_address_field3}</td>
-              <td>{submitResult.shipping_address_field1}</td>
-              <td>{submitResult.shipping_address_field2}</td>
-              <td>{submitResult.shipping_address_field3}</td>
-            </tr>
-          </tbody>
-        </table>
+        <div className='view-object'>
+          <div className='view-set'>
+            <div className='view-item'>{l10n.NAME}</div>
+            <div className='view-item'>{submitResult.name}</div>
+          </div>
+          <div className='view-set'>
+            <div className='view-item'>{l10n.PHONE}</div>
+            <div className='view-item'>{submitResult.phone}</div>
+          </div>
+          <div className='view-set'>
+            <div className='view-item'>{l10n.EMAIL}</div>
+            <div className='view-item'>{submitResult.email}</div>
+          </div>
+          <div className='view-set'>
+            <div className='view-item'>{l10n.ADDRESS_FIELD1}</div>
+            <div className='view-item'>{submitResult.billing_address_field1}</div>
+          </div>
+          <div className='view-set'>
+            <div className='view-item'>{l10n.ADDRESS_FIELD2}</div>
+            <div className='view-item'>{submitResult.billing_address_field2}</div>
+          </div>
+          <div className='view-set'>
+            <div className='view-item'>{l10n.ADDRESS_FIELD3}</div>
+            <div className='view-item'>{submitResult.billing_address_field3}</div>
+          </div>
+          <div className='view-set'>
+            <div className='view-item'>{l10n.ADDRESS_FIELD1}</div>
+            <div className='view-item'>{submitResult.shipping_address_field1}</div>
+          </div>
+          <div className='view-set'>
+            <div className='view-item'>{l10n.ADDRESS_FIELD2}</div>
+            <div className='view-item'>{submitResult.shipping_address_field2}</div>
+          </div>
+          <div className='view-set'>
+            <div className='view-item'>{l10n.ADDRESS_FIELD3}</div>
+            <div className='view-item'>{submitResult.shipping_address_field3}</div>
+          </div>
+          <div className='view-set'>
+            <button className='view-button formbutton' onClick={handleUpdate} value={submitResult._id}>{'Update'}</button>
+          </div>
+        </div>
     }
     </div>
   );
@@ -43,6 +56,7 @@ export const ContactView = ({ submitResult, fetching, l10n }) => {
 
 ContactView.propTypes = {
   submitResult: PropTypes.object.isRequired,
+  handleUpdate: PropTypes.func.isRequired,
   fetching: PropTypes.bool.isRequired,
   l10n: PropTypes.object.isRequired
 };

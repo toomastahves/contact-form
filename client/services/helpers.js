@@ -54,7 +54,7 @@ export const buttonStatus = (contact) => {
 
   const status = name.valid && (phone.valid || email.valid) &&
     billing_address_field1.valid && billing_address_field2.valid && billing_address_field3.valid && accept_terms.valid &&
-    (!same_address ? shipping_address_field1.valid && shipping_address_field2.valid && shipping_address_field3.valid : true);
+    (!same_address.value ? shipping_address_field1.valid && shipping_address_field2.valid && shipping_address_field3.valid : true);
 
   return status;
 };

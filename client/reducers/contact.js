@@ -61,7 +61,8 @@ const initialState = {
       valid: false,
       touched: false
     }
-  }
+  },
+  contactViewVisible: false
 };
 
 export const contactReducer = (state = initialState, action) => {
@@ -70,14 +71,14 @@ export const contactReducer = (state = initialState, action) => {
       return Object.assign({}, initialState);
 
     case actions.CREATE_CONTACT_REQUEST:
-      return Object.assign({}, state, { fetching: true });
+      return Object.assign({}, state, { contactViewVisible: true, fetching: true });
     case actions.CREATE_CONTACT_SUCCESS:
       return Object.assign({}, state, { submitResult: action.result, fetching: false });
     case actions.CREATE_CONTACT_FAILED:
       return Object.assign({}, state, { error: action.error, fetching: false });
 
     case actions.UPDATE_CONTACT_REQUEST:
-      return Object.assign({}, state, { fetching: true });
+      return Object.assign({}, state, { contactViewVisible: true, fetching: true });
     case actions.UPDATE_CONTACT_SUCCESS:
       return Object.assign({}, state, { submitResult: action.result, fetching: false });
     case actions.UPDATE_CONTACT_FAILED:
@@ -91,7 +92,7 @@ export const contactReducer = (state = initialState, action) => {
       return Object.assign({}, state, { fetching: false, error: action.error });
 
     case actions.GET_CONTACT_REQUEST:
-      return Object.assign({}, state, { fetching: true });
+      return Object.assign({}, state, { contactViewVisible: false, fetching: true });
     case actions.GET_CONTACT_SUCCESS:
       return Object.assign({}, state, { fetching: false, contact: action.contact });
     case actions.GET_CONTACT_FAILED:
