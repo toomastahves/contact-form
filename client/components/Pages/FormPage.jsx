@@ -2,15 +2,13 @@ import React, { PropTypes } from 'react';
 import Form from '../Parts/Form';
 import Result from '../Parts/Result';
 import { connect } from 'react-redux';
-import { delegateHandleChange } from '../../actions/form';
+import { delegateHandleChange, initNewForm } from '../../actions/form';
 import { createContactRequest, getContactRequest } from '../../actions/api';
 import { convertFormToJSON, mapIfSameAddress } from '../../services/helpers';
 import ContentLayout from '../Layouts/Content';
 
 export const FormPage = ({ contact, dispatch, submitResult, fetching, l10n }) => {
-  console.log(contact);
   const handleChange = (e) => {
-    console.log(e.target.value);
     if(e.target.type === 'checkbox')
       return dispatch(delegateHandleChange(e.target.name, e.target.checked));
 
@@ -57,8 +55,11 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  const path = window.location.hash.split('/');
+const mapDispatchToProps = (dispatch, ownProps) => {
+  const path = ownProps.location.pathname.split('/');
+  if(path[1] === 'create') {
+    dispatch(initNewForm());
+  }
   if(path[1] === 'update') {
     dispatch(getContactRequest(path[2]));
   }

@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { buttonStatus }  from '../../services/helpers';
 
 export const Form = ({ handleChange, contact, handleSubmit, l10n }) => {
   const {
@@ -6,10 +7,7 @@ export const Form = ({ handleChange, contact, handleSubmit, l10n }) => {
     same_address, shipping_address_field1, shipping_address_field2, shipping_address_field3, accept_terms
   } = contact;
 
-  // TODO: find better place for this logic
-  const status = name.valid && (phone.valid || email.valid) &&
-    billing_address_field1.valid && billing_address_field2.valid && billing_address_field3.valid && accept_terms.valid &&
-    (!same_address ? shipping_address_field1.valid && shipping_address_field2.valid && shipping_address_field3.valid : true);
+  const status = buttonStatus(contact);
 
   return (
     <div className='container'>
@@ -99,16 +97,16 @@ export const Form = ({ handleChange, contact, handleSubmit, l10n }) => {
 
         <div className='form-set address-pick'>
           <div>
-            <input className='start-right' readOnly checked={same_address === true} value={true} type='radio' name='same_address' id='same_address_true' />
+            <input className='start-right' readOnly checked={same_address.value === true} value={true} type='radio' name='same_address' id='same_address_true' />
             <label htmlFor='same_address_true'>{l10n.SAME_ADDRESS_TRUE}</label>
           </div>
           <div>
-            <input className='start-right' readOnly checked={same_address === false} value={false} type='radio' name='same_address' id='same_address_false' />
+            <input className='start-right' readOnly checked={same_address.value === false} value={false} type='radio' name='same_address' id='same_address_false' />
             <label htmlFor='same_address_false'>{l10n.SAME_ADDRESS_FALSE}</label>
           </div>
         </div>
 
-        {same_address === false &&
+        {same_address.value === false &&
           <div>
             <div className='error'>
               {!shipping_address_field1.valid && shipping_address_field1.touched && l10n.ADDRESS_FIELD1_ERROR}

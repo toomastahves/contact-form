@@ -1,5 +1,11 @@
 import * as actions from '../constants/contact';
 
+export const initNewForm = () => {
+  return {
+    type: actions.INIT_NEW_FORM
+  };
+};
+
 export const nameChange = (value) => {
   const name = {
     value,
@@ -90,9 +96,14 @@ export const billingAddressField3Change = (value) => {
 };
 
 export const sameAddressChange = (value) => {
+  const same_address = {
+    value: value === 'true',
+    valid: true,
+    touched: true
+  };
   return {
     type: actions.SAME_ADDRESS_CHANGE,
-    same_address: value === 'true'
+    same_address
   };
 };
 

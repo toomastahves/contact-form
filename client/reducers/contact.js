@@ -36,7 +36,11 @@ const initialState = {
       valid: false,
       touched: false
     },
-    same_address: true,
+    same_address: {
+      value: true,
+      valid: true,
+      touched: false
+    },
     shipping_address_field1: {
       value: '',
       valid: false,
@@ -62,6 +66,8 @@ const initialState = {
 
 export const contactReducer = (state = initialState, action) => {
   switch(action.type) {
+    case actions.INIT_NEW_FORM:
+      return Object.assign({}, initialState);
     case actions.CREATE_CONTACT_REQUEST:
       return Object.assign({}, state, { fetching: true });
     case actions.CREATE_CONTACT_SUCCESS:

@@ -1,5 +1,7 @@
 export const SERVER_URI = process.env.SERVER_URI || 'http://localhost:3000';
 
+export const INIT_NEW_FORM = 'INIT_NEW_FORM';
+
 export const CREATE_CONTACT_REQUEST = 'CREATE_CONTACT_REQUEST';
 export const CREATE_CONTACT_SUCCESS = 'CREATE_CONTACT_SUCCESS';
 export const CREATE_CONTACT_FAILED = 'CREATE_CONTACT_FAILED';
