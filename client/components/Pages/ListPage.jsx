@@ -4,9 +4,16 @@ import { connect } from 'react-redux';
 import Spinner from '../Parts/Spinner';
 import { listContactsRequest } from '../../actions/api';
 import { Table, Thead, Th } from 'reactable';
+import { Link } from 'react-router';
 
 export const ListPage = ({ fetching, contacts }) => {
   if(fetching) return <div className='spinner-location'><Spinner /></div>;
+
+  for(let i = 0; i < contacts.length; i++) {
+    const url = <Link to={`/update/${contacts[i]._id}`}>{contacts[i].name}</Link>;
+    contacts[i].name = url;
+  }
+
   return (
     <div>
       <Table
@@ -15,7 +22,7 @@ export const ListPage = ({ fetching, contacts }) => {
         noDataText='No matching records found.'
         itemsPerPage={10} pageButtonLimit={10}
         data={contacts}
-        filterable={['name']}
+        filterable={['name', 'email', 'phone']}
       >
         <Thead>
           <Th column='name'>
@@ -40,11 +47,10 @@ ListPage.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    contacts: state.apiReducer.contacts,
-    fetching: state.apiReducer.fetching
+    contacts: state.contactReducer.contacts,
+    fetching: state.contactReducer.fetching
   };
 };
-
 
 const mapDispatchToProps = (dispatch) => {
   dispatch(listContactsRequest('get'));

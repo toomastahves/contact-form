@@ -2,6 +2,7 @@ import Contact from '../models/Contact';
 import parse from 'co-body';
 
 export function* getContact(_id) {
+  console.log('request', _id);
   const result = yield Contact.findOne({ _id }).exec();
 
   if(!result)

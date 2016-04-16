@@ -2,14 +2,14 @@ import React, { PropTypes } from 'react';
 
 export const Form = ({ handleChange, contact, handleSubmit, l10n }) => {
   const {
-    name, phone, email, billingAddressField1, billingAddressField2, billingAddressField3,
-    sameAddress, shippingAddressField1, shippingAddressField2, shippingAddressField3, acceptTerms
+    name, phone, email, billing_address_field1, billing_address_field2, billing_address_field3,
+    same_address, shipping_address_field1, shipping_address_field2, shipping_address_field3, accept_terms
   } = contact;
 
   // TODO: find better place for this logic
   const status = name.valid && (phone.valid || email.valid) &&
-    billingAddressField1.valid && billingAddressField2.valid && billingAddressField3.valid && acceptTerms.valid &&
-    (!sameAddress ? shippingAddressField1.valid && shippingAddressField2.valid && shippingAddressField3.valid : true);
+    billing_address_field1.valid && billing_address_field2.valid && billing_address_field3.valid && accept_terms.valid &&
+    (!same_address ? shipping_address_field1.valid && shipping_address_field2.valid && shipping_address_field3.valid : true);
 
   return (
     <div className='container'>
@@ -59,38 +59,38 @@ export const Form = ({ handleChange, contact, handleSubmit, l10n }) => {
         </div>
 
         <div className='error'>
-          {!billingAddressField1.valid && billingAddressField1.touched && l10n.ADDRESS_FIELD1_ERROR}
+          {!billing_address_field1.valid && billing_address_field1.touched && l10n.ADDRESS_FIELD1_ERROR}
         </div>
         <div className='form-set'>
           <div className='form-label'>
             <label htmlFor='billing_address_field1'>{l10n.ADDRESS_FIELD1}</label>
           </div>
           <div className='form-input'>
-            <input className='textinput' value={billingAddressField1.value} type='text' name='billing_address_field1' id='billing_address_field1' />
+            <input className='textinput' value={billing_address_field1.value} type='text' name='billing_address_field1' id='billing_address_field1' />
           </div>
         </div>
 
         <div className='error'>
-          {!billingAddressField2.valid && billingAddressField2.touched && l10n.ADDRESS_FIELD2_ERROR}
+          {!billing_address_field2.valid && billing_address_field2.touched && l10n.ADDRESS_FIELD2_ERROR}
         </div>
         <div className='form-set'>
           <div className='form-label'>
             <label htmlFor='billing_address_field2'>{l10n.ADDRESS_FIELD2}</label>
           </div>
           <div className='form-input'>
-            <input className='textinput' value={billingAddressField2.value} type='text' name='billing_address_field2' id='billing_address_field2' />
+            <input className='textinput' value={billing_address_field2.value} type='text' name='billing_address_field2' id='billing_address_field2' />
           </div>
         </div>
 
         <div className='error'>
-          {!billingAddressField3.valid && billingAddressField3.touched && l10n.ADDRESS_FIELD3_ERROR}
+          {!billing_address_field3.valid && billing_address_field3.touched && l10n.ADDRESS_FIELD3_ERROR}
         </div>
         <div className='form-set'>
           <div className='form-label'>
             <label htmlFor='billing_address_field3'>{l10n.ADDRESS_FIELD3}</label>
           </div>
           <div className='form-input'>
-            <select className='textinput' value={billingAddressField3.value} name='billing_address_field3' id='billing_address_field3' >
+            <select className='textinput' value={billing_address_field3.value} name='billing_address_field3' id='billing_address_field3' >
               <option value=''>{l10n.ADDRESS_FIELD3_EMPTY}</option>
               <option value='Harjumaa'>{'Harjumaa'}</option>
             </select>
@@ -99,50 +99,50 @@ export const Form = ({ handleChange, contact, handleSubmit, l10n }) => {
 
         <div className='form-set address-pick'>
           <div>
-            <input className='start-right' readOnly checked={sameAddress === true} value={true} type='radio' name='same_address' id='same_address_true' />
+            <input className='start-right' readOnly checked={same_address === true} value={true} type='radio' name='same_address' id='same_address_true' />
             <label htmlFor='same_address_true'>{l10n.SAME_ADDRESS_TRUE}</label>
           </div>
           <div>
-            <input className='start-right' readOnly checked={sameAddress === false} value={false} type='radio' name='same_address' id='same_address_false' />
+            <input className='start-right' readOnly checked={same_address === false} value={false} type='radio' name='same_address' id='same_address_false' />
             <label htmlFor='same_address_false'>{l10n.SAME_ADDRESS_FALSE}</label>
           </div>
         </div>
 
-        {sameAddress === false &&
+        {same_address === false &&
           <div>
             <div className='error'>
-              {!shippingAddressField1.valid && shippingAddressField1.touched && l10n.ADDRESS_FIELD1_ERROR}
+              {!shipping_address_field1.valid && shipping_address_field1.touched && l10n.ADDRESS_FIELD1_ERROR}
             </div>
             <div className='form-set'>
               <div className='form-label'>
                 <label htmlFor='shipping_address_field1'>{l10n.ADDRESS_FIELD1}</label>
               </div>
               <div className='form-input'>
-                <input className='textinput' value={shippingAddressField1.value} type='text' name='shipping_address_field1' id='shipping_address_field1' />
+                <input className='textinput' value={shipping_address_field1.value} type='text' name='shipping_address_field1' id='shipping_address_field1' />
               </div>
             </div>
 
             <div className='error'>
-              {!shippingAddressField2.valid && shippingAddressField2.touched && l10n.ADDRESS_FIELD2_ERROR}
+              {!shipping_address_field2.valid && shipping_address_field2.touched && l10n.ADDRESS_FIELD2_ERROR}
             </div>
             <div className='form-set'>
               <div className='form-label'>
                 <label htmlFor='shipping_address_field2'>{l10n.ADDRESS_FIELD2}</label>
               </div>
               <div className='form-input'>
-                <input className='textinput' value={shippingAddressField2.value} type='text' name='shipping_address_field2' id='shipping_address_field2' />
+                <input className='textinput' value={shipping_address_field2.value} type='text' name='shipping_address_field2' id='shipping_address_field2' />
               </div>
             </div>
 
             <div className='error'>
-              {!shippingAddressField3.valid && shippingAddressField3.touched && l10n.ADDRESS_FIELD3_ERROR}
+              {!shipping_address_field3.valid && shipping_address_field3.touched && l10n.ADDRESS_FIELD3_ERROR}
             </div>
             <div className='form-set'>
               <div className='form-label'>
                 <label htmlFor='shipping_address_field3'>{l10n.ADDRESS_FIELD3}</label>
               </div>
               <div className='form-input'>
-                <select className='textinput' value={shippingAddressField3.value} name='shipping_address_field3' id='shipping_address_field3' >
+                <select className='textinput' value={shipping_address_field3.value} name='shipping_address_field3' id='shipping_address_field3' >
                   <option value=''>{l10n.ADDRESS_FIELD3_EMPTY}</option>
                   <option value='Harjumaa'>{'Harjumaa'}</option>
                 </select>
@@ -152,12 +152,12 @@ export const Form = ({ handleChange, contact, handleSubmit, l10n }) => {
         }
 
         <div className='error'>
-          {!acceptTerms.valid && acceptTerms.touched && l10n.ACCEPT_TERMS_ERROR}
+          {!accept_terms.valid && accept_terms.touched && l10n.ACCEPT_TERMS_ERROR}
         </div>
         <div className='form-set accept-terms'>
           <div>
-            <input checked={acceptTerms.value} id='agree_terms' name='agree_terms' type='checkbox' />
-            <label htmlFor='agree_terms'>{l10n.ACCEPT_TERMS}</label>
+            <input checked={accept_terms.value} id='accept_terms' name='accept_terms' type='checkbox' />
+            <label htmlFor='accept_terms'>{l10n.ACCEPT_TERMS}</label>
           </div>
         </div>
 

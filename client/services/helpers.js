@@ -1,4 +1,4 @@
-import { SERVER_URI } from '../constants/api';
+import { SERVER_URI } from '../constants/contact';
 
 export const convertFormToJSON = (form) => {
   const formData = new FormData(form);
@@ -19,6 +19,24 @@ export const mapIfSameAddress = (data) => {
     }));
   }
   return JSON.stringify(json);
+};
+
+export const mapFormMetaDataToObject = (data) => {
+  const mappedData = {};
+  for(const key in data) {
+    if(data.hasOwnProperty(key)) {
+      mappedData[key] = {};
+      mappedData[key].value = data[key];
+      mappedData[key].valid = false;
+      mappedData[key].touched = false;
+    }
+  }
+  mappedData.acceptTerms = {
+    value: false,
+    valid: false,
+    touched: false
+  };
+  return mappedData;
 };
 
 // http://www.html5rocks.com/en/tutorials/es6/promises/

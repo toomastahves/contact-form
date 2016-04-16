@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react';
 import Spinner from './Spinner';
 
-export const Result = ({ submitResult, submitting, l10n }) => {
+export const Result = ({ submitResult, fetching, l10n }) => {
   return(
     <div>
-      {submitting ?
+      {fetching ?
         <div className='spinner-location'>
           <Spinner />
         </div> :
@@ -43,7 +43,7 @@ export const Result = ({ submitResult, submitting, l10n }) => {
 
 Result.propTypes = {
   submitResult: PropTypes.object.isRequired,
-  submitting: PropTypes.bool.isRequired,
+  fetching: PropTypes.bool.isRequired,
   l10n: PropTypes.object.isRequired
 };
 

@@ -5,7 +5,7 @@ export const Header = ({ handleLanguageChange }) => {
     <div className='header'>
       <div className='menu'>
         <a href='#home'>{'Home'}</a>
-        <a href='#form'>{'Form'}</a>
+        <a href='#create'>{'Create'}</a>
         <a href='#list'>{'List'}</a>
       </div>
       <div className='language'>

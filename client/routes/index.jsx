@@ -14,7 +14,8 @@ export const Routes = () => {
       <Route path='/' components={App}>
         <IndexRoute component={HomePage} />
         <Route path='home' component={HomePage} />
-        <Route path='form' component={FormPage} />
+        <Route path='create' component={FormPage} />
+        <Route path='update/:_id' component={FormPage}/>
         <Route path='list' component={ListPage} />
       </Route>
     </Router>

@@ -1,4 +1,5 @@
-import * as actions from '../constants/api';
+import * as actions from '../constants/contact';
+import { mapFormMetaDataToObject } from '../services/helpers';
 
 export const createContactRequest = (data) => {
   return {
@@ -33,6 +34,26 @@ export const listContactsSuccess = (contacts) => {
 export const listContactsFailed = (error) => {
   return {
     type: actions.LIST_CONTACTS_FAILED,
+    error
+  };
+};
+
+export const getContactRequest = (_id) => {
+  return {
+    type: actions.GET_CONTACT_REQUEST,
+    _id
+  };
+};
+export const getContactSuccess = (contact) => {
+  const mapped = mapFormMetaDataToObject(contact);
+  return {
+    type: actions.GET_CONTACT_SUCCESS,
+    contact: mapped
+  };
+};
+export const getContactFailed = (error) => {
+  return {
+    type: actions.GET_CONTACT_FAILED,
     error
   };
 };

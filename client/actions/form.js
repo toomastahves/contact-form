@@ -1,9 +1,4 @@
-import {
-  NAME_CHANGE, PHONE_CHANGE, EMAIL_CHANGE,
-  BILLING_ADDRESS_FIELD1_CHANGE, BILLING_ADDRESS_FIELD2_CHANGE, BILLING_ADDRESS_FIELD3_CHANGE,
-  SAME_ADDRESS_CHANGE, SHIPPING_ADDRESS_FIELD1_CHANGE, SHIPPING_ADDRESS_FIELD2_CHANGE,
-  SHIPPING_ADDRESS_FIELD3_CHANGE, ACCEPT_TERMS_CHANGE
-} from '../constants/form';
+import * as actions from '../constants/contact';
 
 export const nameChange = (value) => {
   const name = {
@@ -15,7 +10,7 @@ export const nameChange = (value) => {
     name.valid = false;
   }
   return {
-    type: NAME_CHANGE,
+    type: actions.NAME_CHANGE,
     name
   };
 };
@@ -30,7 +25,7 @@ export const phoneChange = (value) => {
     phone.valid = false;
   }
   return {
-    type: PHONE_CHANGE,
+    type: actions.PHONE_CHANGE,
     phone
   };
 };
@@ -47,114 +42,114 @@ export const emailChange = (value) => {
     email.valid = false;
   }
   return {
-    type: EMAIL_CHANGE,
+    type: actions.EMAIL_CHANGE,
     email
   };
 };
 
 export const billingAddressField1Change = (value) => {
-  const billingAddressField1 = {
+  const billing_address_field1 = {
     value,
     valid: true,
     touched: true
   };
   if(value.length === 0) {
-    billingAddressField1.valid = false;
+    billing_address_field1.valid = false;
   }
   return {
-    type: BILLING_ADDRESS_FIELD1_CHANGE,
-    billingAddressField1
+    type: actions.BILLING_ADDRESS_FIELD1_CHANGE,
+    billing_address_field1
   };
 };
 
 export const billingAddressField2Change = (value) => {
-  const billingAddressField2 = {
+  const billing_address_field2 = {
     value,
     valid: true,
     touched: true
   };
   return {
-    type: BILLING_ADDRESS_FIELD2_CHANGE,
-    billingAddressField2
+    type: actions.BILLING_ADDRESS_FIELD2_CHANGE,
+    billing_address_field2
   };
 };
 
 export const billingAddressField3Change = (value) => {
-  const billingAddressField3 = {
+  const billing_address_field3 = {
     value,
     valid: true,
     touched: true
   };
   if(value.length === 0) {
-    billingAddressField3.valid = false;
+    billing_address_field3.valid = false;
   }
   return {
-    type: BILLING_ADDRESS_FIELD3_CHANGE,
-    billingAddressField3
+    type: actions.BILLING_ADDRESS_FIELD3_CHANGE,
+    billing_address_field3
   };
 };
 
 export const sameAddressChange = (value) => {
   return {
-    type: SAME_ADDRESS_CHANGE,
-    value: value === 'true'
+    type: actions.SAME_ADDRESS_CHANGE,
+    same_address: value === 'true'
   };
 };
 
 export const shippingAddressField1Change = (value) => {
-  const shippingAddressField1 = {
+  const shipping_address_field1 = {
     value,
     valid: true,
     touched: true
   };
   if(value.length === 0) {
-    shippingAddressField1.valid = false;
+    shipping_address_field1.valid = false;
   }
   return {
-    type: SHIPPING_ADDRESS_FIELD1_CHANGE,
-    shippingAddressField1
+    type: actions.SHIPPING_ADDRESS_FIELD1_CHANGE,
+    shipping_address_field1
   };
 };
 
 export const shippingAddressField2Change = (value) => {
-  const shippingAddressField2 = {
+  const shipping_address_field2 = {
     value,
     valid: true,
     touched: true
   };
   return {
-    type: SHIPPING_ADDRESS_FIELD2_CHANGE,
-    shippingAddressField2
+    type: actions.SHIPPING_ADDRESS_FIELD2_CHANGE,
+    shipping_address_field2
   };
 };
 
 export const shippingAddressField3Change = (value) => {
-  const shippingAddressField3 = {
+  const shipping_address_field3 = {
     value,
     valid: true,
     touched: true
   };
   if(value.length === 0) {
-    shippingAddressField3.valid = false;
+    shipping_address_field3.valid = false;
   }
   return {
-    type: SHIPPING_ADDRESS_FIELD3_CHANGE,
-    shippingAddressField3
+    type: actions.SHIPPING_ADDRESS_FIELD3_CHANGE,
+    shipping_address_field3
   };
 };
 
 export const acceptTermsChange = (value) => {
-  const acceptTerms = {
+  const accept_terms = {
     value,
     valid: true,
     touched: true
   };
   if(value === false) {
-    acceptTerms.valid = false;
+    accept_terms.valid = false;
   }
   return {
-    type: ACCEPT_TERMS_CHANGE,
-    acceptTerms
+    type: actions.ACCEPT_TERMS_CHANGE,
+    accept_terms
   };
 };
 
@@ -180,7 +175,7 @@ export const delegateHandleChange = (name, value) => {
       return shippingAddressField2Change(value);
     case 'shipping_address_field3':
       return shippingAddressField3Change(value);
-    case 'agree_terms':
+    case 'accept_terms':
       return acceptTermsChange(value);
     default:
       return;

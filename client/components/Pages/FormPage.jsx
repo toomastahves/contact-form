@@ -3,12 +3,14 @@ import Form from '../Parts/Form';
 import Result from '../Parts/Result';
 import { connect } from 'react-redux';
 import { delegateHandleChange } from '../../actions/form';
-import { createContactRequest } from '../../actions/api';
+import { createContactRequest, getContactRequest } from '../../actions/api';
 import { convertFormToJSON, mapIfSameAddress } from '../../services/helpers';
 import ContentLayout from '../Layouts/Content';
 
-export const FormPage = ({ contact, dispatch, submitResult, submitting, l10n }) => {
+export const FormPage = ({ contact, dispatch, submitResult, fetching, l10n }) => {
+  console.log(contact);
   const handleChange = (e) => {
+    console.log(e.target.value);
     if(e.target.type === 'checkbox')
       return dispatch(delegateHandleChange(e.target.name, e.target.checked));
 
@@ -20,7 +22,6 @@ export const FormPage = ({ contact, dispatch, submitResult, submitting, l10n }) 
     const mapped = mapIfSameAddress(json);
     dispatch(createContactRequest(mapped));
   };
-
   return (
     <div>
       <Form
@@ -28,10 +29,11 @@ export const FormPage = ({ contact, dispatch, submitResult, submitting, l10n }) 
         contact={contact}
         handleSubmit={handleSubmit}
         l10n={l10n}
+        fetching={fetching}
       />
       <Result
         submitResult={submitResult}
-        submitting={submitting}
+        fetching={fetching}
         l10n={l10n}
       />
     </div>
@@ -41,18 +43,26 @@ export const FormPage = ({ contact, dispatch, submitResult, submitting, l10n }) 
 FormPage.propTypes = {
   contact: PropTypes.object.isRequired,
   submitResult: PropTypes.object.isRequired,
-  submitting: PropTypes.bool.isRequired,
+  fetching: PropTypes.bool.isRequired,
   l10n: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => {
   return {
-    contact: state.formReducer,
-    submitResult: state.apiReducer.submitResult,
-    submitting: state.apiReducer.submitting,
+    contact: state.contactReducer.contact,
+    submitResult: state.contactReducer.submitResult,
+    fetching: state.contactReducer.fetching,
     l10n: state.l10nReducer.l10n
   };
 };
 
-export default connect(mapStateToProps)(ContentLayout(FormPage));
+const mapDispatchToProps = (dispatch) => {
+  const path = window.location.hash.split('/');
+  if(path[1] === 'update') {
+    dispatch(getContactRequest(path[2]));
+  }
+  return { dispatch };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContentLayout(FormPage));
