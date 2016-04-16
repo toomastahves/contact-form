@@ -1,13 +1,11 @@
 import React, { PropTypes } from 'react';
-import { buttonStatus }  from '../../services/helpers';
+import { buttonStatus } from '../../services/helpers';
 
 export const Form = ({ handleChange, contact, handleSubmit, l10n }) => {
   const {
     name, phone, email, billing_address_field1, billing_address_field2, billing_address_field3,
     same_address, shipping_address_field1, shipping_address_field2, shipping_address_field3, accept_terms
   } = contact;
-
-  const status = buttonStatus(contact);
 
   return (
     <div className='container'>
@@ -160,7 +158,7 @@ export const Form = ({ handleChange, contact, handleSubmit, l10n }) => {
         </div>
 
         <div className='form-set'>
-          <button className='formbutton' type='submit' disabled={!status}>{l10n.SAVE_BUTTON}</button>
+          <button className='formbutton' type='submit' disabled={!buttonStatus(contact)}>{l10n.SAVE_BUTTON}</button>
         </div>
 
       </form>

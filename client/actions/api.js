@@ -1,10 +1,13 @@
 import * as actions from '../constants/contact';
 import { mapFormMetaDataToObject } from '../services/helpers';
+import { convertFormToJSON, mapIfSameAddress } from '../services/helpers';
 
 export const createContactRequest = (data) => {
+  const json = convertFormToJSON(data);
+  const mapped = mapIfSameAddress(json);
   return {
     type: actions.CREATE_CONTACT_REQUEST,
-    data
+    data: mapped
   };
 };
 export const createContactSuccess = (result) => {
@@ -54,6 +57,28 @@ export const getContactSuccess = (contact) => {
 export const getContactFailed = (error) => {
   return {
     type: actions.GET_CONTACT_FAILED,
+    error
+  };
+};
+
+export const updateContactRequest = (data, _id) => {
+  const json = convertFormToJSON(data, _id);
+  const mapped = mapIfSameAddress(json);
+  return {
+    type: actions.UPDATE_CONTACT_REQUEST,
+    data: mapped
+  };
+};
+export const updateContactSuccess = (contact) => {
+  const mapped = mapFormMetaDataToObject(contact);
+  return {
+    type: actions.UPDATE_CONTACT_SUCCESS,
+    contact: mapped
+  };
+};
+export const updateContactFailed = (error) => {
+  return {
+    type: actions.UPDATE_CONTACT_FAILED,
     error
   };
 };

@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import Spinner from './Spinner';
 
-export const Result = ({ submitResult, fetching, l10n }) => {
+export const ContactView = ({ submitResult, fetching, l10n }) => {
   return(
     <div>
       {fetching ?
@@ -41,10 +41,10 @@ export const Result = ({ submitResult, fetching, l10n }) => {
   );
 };
 
-Result.propTypes = {
+ContactView.propTypes = {
   submitResult: PropTypes.object.isRequired,
   fetching: PropTypes.bool.isRequired,
   l10n: PropTypes.object.isRequired
 };
 
-export default Result;
+export default ContactView;

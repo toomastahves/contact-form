@@ -39,7 +39,7 @@ export function* updateContact() {
     this.throw('Problems with request', 400);
 
   const result = yield Contact.update({ _id: body._id }, body);
-
+  console.log(result);
   if(!result.n)
     this.throw('Problems while updating.', 400);
 

@@ -1,11 +1,15 @@
 import { SERVER_URI } from '../constants/contact';
 
-export const convertFormToJSON = (form) => {
+export const convertFormToJSON = (form, _id) => {
   const formData = new FormData(form);
   const obj = {};
   for(const key of formData.keys()) {
     obj[key] = formData.get(key);
   }
+
+  if(_id)
+    obj['_id'] = _id;
+
   return JSON.stringify(obj);
 };
 
@@ -57,6 +61,7 @@ export const buttonStatus = (contact) => {
 
 export const fetch = ({ path, type, data }) => {
   console.log(`${SERVER_URI}${path}`);
+  console.log(data);
   return new Promise((resolve, reject) => {
     const req = new XMLHttpRequest();
     req.open(type, `${SERVER_URI}${path}`);

@@ -1,24 +1,26 @@
 import React, { PropTypes } from 'react';
 import Form from '../Parts/Form';
-import Result from '../Parts/Result';
+import ContactView from '../Parts/ContactView';
 import { connect } from 'react-redux';
 import { delegateHandleChange, initNewForm } from '../../actions/form';
-import { createContactRequest, getContactRequest } from '../../actions/api';
-import { convertFormToJSON, mapIfSameAddress } from '../../services/helpers';
+import { createContactRequest, updateContactRequest, getContactRequest } from '../../actions/api';
 import ContentLayout from '../Layouts/Content';
 
-export const FormPage = ({ contact, dispatch, submitResult, fetching, l10n }) => {
+export const FormPage = ({ contact, dispatch, submitResult, fetching, l10n, location }) => {
   const handleChange = (e) => {
     if(e.target.type === 'checkbox')
       return dispatch(delegateHandleChange(e.target.name, e.target.checked));
 
-    dispatch(delegateHandleChange(e.target.name, e.target.value));
+    return dispatch(delegateHandleChange(e.target.name, e.target.value));
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    const json = convertFormToJSON(e.target);
-    const mapped = mapIfSameAddress(json);
-    dispatch(createContactRequest(mapped));
+    const path = location.pathname.split('/');
+    if(path[1] === 'create')
+      return dispatch(createContactRequest(e.target));
+
+    if(path[1] === 'update')
+      return dispatch(updateContactRequest(e.target, path[2]));
   };
   return (
     <div>
@@ -27,9 +29,8 @@ export const FormPage = ({ contact, dispatch, submitResult, fetching, l10n }) =>
         contact={contact}
         handleSubmit={handleSubmit}
         l10n={l10n}
-        fetching={fetching}
       />
-      <Result
+      <ContactView
         submitResult={submitResult}
         fetching={fetching}
         l10n={l10n}
@@ -43,6 +44,7 @@ FormPage.propTypes = {
   submitResult: PropTypes.object.isRequired,
   fetching: PropTypes.bool.isRequired,
   l10n: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired
 };
 

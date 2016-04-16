@@ -9,10 +9,8 @@ import { Link } from 'react-router';
 export const ListPage = ({ fetching, contacts }) => {
   if(fetching) return <div className='spinner-location'><Spinner /></div>;
 
-  for(let i = 0; i < contacts.length; i++) {
-    const url = <Link to={`/update/${contacts[i]._id}`}>{contacts[i].name}</Link>;
-    contacts[i].name = url;
-  }
+  for(let i = 0; i < contacts.length; i++)
+    contacts[i].link = <Link to={`/update/${contacts[i]._id}`}>{contacts[i].name}</Link>;
 
   return (
     <div>
@@ -22,10 +20,10 @@ export const ListPage = ({ fetching, contacts }) => {
         noDataText='No matching records found.'
         itemsPerPage={10} pageButtonLimit={10}
         data={contacts}
-        filterable={['name', 'email', 'phone']}
+        filterable={['link', 'email', 'phone']}
       >
         <Thead>
-          <Th column='name'>
+          <Th column='link'>
             <strong className='name-header'>{'Name'}</strong>
           </Th>
           <Th column='email'>
@@ -53,7 +51,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  dispatch(listContactsRequest('get'));
+  dispatch(listContactsRequest());
   return { dispatch };
 };
 

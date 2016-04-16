@@ -1,9 +1,9 @@
 import { put, call, fork, take } from 'redux-saga/effects';
 import {
   createContactSuccess, createContactFailed, listContactsSuccess, listContactsFailed,
-  getContactSuccess, getContactFailed
+  getContactSuccess, getContactFailed, updateContactSuccess, updateContactFailed
 } from '../actions/api';
-import { CREATE_CONTACT_REQUEST, LIST_CONTACTS_REQUEST, GET_CONTACT_REQUEST } from '../constants/contact';
+import { CREATE_CONTACT_REQUEST, LIST_CONTACTS_REQUEST, GET_CONTACT_REQUEST, UPDATE_CONTACT_REQUEST } from '../constants/contact';
 import { fetch } from '../services/helpers';
 
 export function* createContact(data) {
@@ -57,5 +57,23 @@ export function* watchGetContact() {
   while(true) {
     const action = yield take(GET_CONTACT_REQUEST);
     yield fork(getContact, action);
+  }
+}
+
+export function* updateContact(action) {
+  // Increasing server response time
+  yield new Promise(resolve => setTimeout(resolve, 1000));
+  try {
+    const result = yield call(fetch, { path: '/contact', type: 'PUT', data: action.data });
+    yield put(updateContactSuccess(result));
+  } catch(error) {
+    yield put(updateContactFailed(error));
+  }
+}
+export function* watchUpdateContact() {
+  // watching contact creation
+  while(true) {
+    const action = yield take(UPDATE_CONTACT_REQUEST);
+    yield fork(updateContact, action);
   }
 }
