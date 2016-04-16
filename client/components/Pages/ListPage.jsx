@@ -15,6 +15,7 @@ export const ListPage = ({ fetching, contacts }) => {
   return (
     <div>
       <Table
+        className='pure-table pure-table-horizontal table-wrap'
         sortable={true}
         defaultSort={{ column: '_id', direction: 'desc' }}
         noDataText='No matching records found.'

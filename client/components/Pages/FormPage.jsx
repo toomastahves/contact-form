@@ -23,7 +23,6 @@ export const FormPage = ({ contact, dispatch, submitResult, fetching, l10n, loca
       return dispatch(updateContactRequest(e.target, path[2]));
   };
   const handleUpdate = (e) => {
-    console.log(e.target.value);
     window.location = `#/update/${e.target.value}`;
   };
   return (
