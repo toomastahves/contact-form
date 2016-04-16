@@ -32,6 +32,7 @@ export const FormPage = ({ contact, dispatch, submitResult, fetching, l10n, loca
         contact={contact}
         handleSubmit={handleSubmit}
         l10n={l10n}
+        fetching={fetching}
       />
       {contactViewVisible &&
         <ContactView
@@ -39,6 +40,7 @@ export const FormPage = ({ contact, dispatch, submitResult, fetching, l10n, loca
           submitResult={submitResult}
           fetching={fetching}
           l10n={l10n}
+          location={location}
         />
       }
     </div>

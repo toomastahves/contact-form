@@ -49,6 +49,7 @@
     "express": "^4.13.4",
     "file-loader": "^0.8.5",
     "history": "^2.0.1",
+    "jsdom-global": "^1.7.0",
     "koa": "^1.2.0",
     "koa-cors": "0.0.16",
     "koa-favicon": "^1.2.1",

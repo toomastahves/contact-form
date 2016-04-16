@@ -3,3 +3,4 @@
 --recursive ./test/**/*.spec.js
 --timeout 1000
 --require ./test/index.js
+-r jsdom-global/register

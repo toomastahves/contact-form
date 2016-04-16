@@ -1,7 +1,8 @@
 import React, { PropTypes } from 'react';
 import Spinner from './Spinner';
 
-export const ContactView = ({ submitResult, handleUpdate, fetching, l10n }) => {
+export const ContactView = ({ submitResult, handleUpdate, fetching, l10n, location }) => {
+  const buttonVisibility = location.pathname.split('/')[1] === 'update' ? { visibility: 'hidden' } : {};
   return (
     <div>
       {fetching ?
@@ -45,7 +46,7 @@ export const ContactView = ({ submitResult, handleUpdate, fetching, l10n }) => {
             <div className='view-item'>{l10n.ADDRESS_FIELD3}</div>
             <div className='view-item'>{submitResult.shipping_address_field3}</div>
           </div>
-          <div className='view-set'>
+          <div className='view-set' style={buttonVisibility}>
             <button className='view-button formbutton' onClick={handleUpdate} value={submitResult._id}>{'Update'}</button>
           </div>
         </div>
@@ -58,7 +59,8 @@ ContactView.propTypes = {
   submitResult: PropTypes.object.isRequired,
   handleUpdate: PropTypes.func.isRequired,
   fetching: PropTypes.bool.isRequired,
-  l10n: PropTypes.object.isRequired
+  l10n: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired
 };
 
 export default ContactView;

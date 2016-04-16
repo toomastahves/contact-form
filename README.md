@@ -19,7 +19,11 @@ Sends form values to server
 Echoes back form values  
 
 ---
+### Issues
+Changing language fast causes error, lifecycle problem  
+Changing update form to create form fast will fill create form with update form values    
+
+---
 ### Todos
 Write more unit tests  
 Save form values automatically on change, add throttle and execute through saga  
-Use CSS framework for styling  

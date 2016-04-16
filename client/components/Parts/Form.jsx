@@ -1,7 +1,10 @@
 import React, { PropTypes } from 'react';
 import { buttonStatus } from '../../services/helpers';
+import Spinner from './Spinner';
 
-export const Form = ({ handleChange, contact, handleSubmit, l10n }) => {
+export const Form = ({ handleChange, contact, handleSubmit, l10n, fetching }) => {
+  if(fetching) return <div className='spinner-location'><Spinner /></div>;
+
   const {
     name, phone, email, billing_address_field1, billing_address_field2, billing_address_field3,
     same_address, shipping_address_field1, shipping_address_field2, shipping_address_field3, accept_terms
@@ -170,7 +173,8 @@ Form.propTypes = {
   handleChange: PropTypes.func.isRequired,
   contact: PropTypes.object.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  l10n: PropTypes.object.isRequired
+  l10n: PropTypes.object.isRequired,
+  fetching: PropTypes.bool.isRequired
 };
 
 export default Form;

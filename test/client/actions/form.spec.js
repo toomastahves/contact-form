@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import * as constants from 'client/constants/form';
+import * as constants from 'client/constants/contact';
 import * as actions from 'client/actions/form';
 
 describe('form actions', () => {
