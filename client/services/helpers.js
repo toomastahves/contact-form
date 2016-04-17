@@ -1,5 +1,8 @@
 import { SERVER_URI } from '../constants/contact';
 
+/*
+* Converts HTML form values to JSON string.
+*/
 export const convertFormToJSON = (form, _id) => {
   const formData = new FormData(form);
   const obj = {};
@@ -13,6 +16,9 @@ export const convertFormToJSON = (form, _id) => {
   return JSON.stringify(obj);
 };
 
+/*
+* If billing and shipping addresses are the same, then copies values over.
+*/
 export const mapIfSameAddress = (data) => {
   const json = JSON.parse(data);
   if(json.same_address === 'true') {
@@ -25,6 +31,9 @@ export const mapIfSameAddress = (data) => {
   return JSON.stringify(json);
 };
 
+/*
+* Converts server response object to form object.
+*/
 export const mapFormMetaDataToObject = (data) => {
   const mappedData = {};
   for(const key in data) {
@@ -48,10 +57,16 @@ export const mapFormMetaDataToObject = (data) => {
   return mappedData;
 };
 
+/*
+* Adds delay to request time. Simulating longer response time.
+*/
 export const delay = (time) => {
   return new Promise(resolve => setTimeout(resolve, time));
 };
 
+/*
+* Data fetching method.
+*/
 export const fetch = ({ path, type, data }) => {
   console.log(`${type} ${SERVER_URI}${path}`);
   return new Promise((resolve, reject) => {
