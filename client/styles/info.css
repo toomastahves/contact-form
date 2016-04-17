@@ -1,0 +1,18 @@
+/**
+* Styles for info content on home page
+*/
+.content {
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 100px;
+  text-align: left;
+  max-width: 680px;
+}
+
+h2 {
+  color: rgb(70, 69, 69);
+}
+
+.home-content * {
+  padding: 1px;
+}
