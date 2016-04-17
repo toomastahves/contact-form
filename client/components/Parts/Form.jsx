@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import Spinner from './Spinner';
 
-export const Form = ({ handleChange, contact, handleSubmit, l10n, formFetching }) => {
+export const Form = ({ handleChange, contact, handleSubmit, l10n, formFetching, serverError }) => {
   if(formFetching) return <div className='spinner-location'><Spinner /></div>;
 
   const {
@@ -23,6 +23,11 @@ export const Form = ({ handleChange, contact, handleSubmit, l10n, formFetching }
 
         <div className='form-set'>
           <div className='title'>{l10n.CONTACT_FORM_TITLE}</div>
+        </div>
+        <div className='form-set'>
+          <div className='error'>
+            {serverError.message}
+          </div>
         </div>
 
         <div className='error'>
@@ -181,7 +186,8 @@ Form.propTypes = {
   contact: PropTypes.object.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   l10n: PropTypes.object.isRequired,
-  formFetching: PropTypes.bool.isRequired
+  formFetching: PropTypes.bool.isRequired,
+  serverError: PropTypes.object.isRequired
 };
 
 export default Form;

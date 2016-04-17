@@ -19,34 +19,38 @@ export function* listContacts() {
 export function* createContact() {
   const body = yield parse(this);
   console.log(body);
-  if(!body)
-    this.throw('Problems with request', 400);
+  if(!body) {
+    this.body({ error: 'Problems with request' });
+    this.status = 400;
+  }
 
   const newContact = new Contact(body);
-  const result = yield newContact.save();
-
-  if(!result)
-    this.throw('Problems while saving.', 400);
-
-  this.body = result;
-  this.status = 201;
+  try {
+    const result = yield newContact.save();
+    this.body = result;
+    this.status = 201;
+  } catch(error) {
+    this.body = error;
+    this.status = 400;
+  }
 }
 
 export function* updateContact() {
   const body = yield parse.json(this);
+  console.log(body);
+  if(!body) {
+    this.body({ error: 'Problems with request' });
+    this.status = 400;
+  }
 
-  if(!body)
-    this.throw('Problems with request', 400);
-
-  let result = yield Contact.update({ _id: body._id }, body);
-
-  if(!result.n)
-    this.throw('Problems while updating.', 400);
-
-  if(result.n)
-    result = yield Contact.findOne({ _id: body._id }).exec();
-
-  this.body = result;
+  try {
+    yield Contact.update({ _id: body._id }, body, { runValidators: true });
+    const updatedContact = yield Contact.findOne({ _id: body._id }).exec();
+    this.body = updatedContact;
+  } catch(error) {
+    this.body = error;
+    this.status = 400;
+  }
 }
 
 export function* deleteContact(_id) {

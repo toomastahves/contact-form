@@ -2,7 +2,7 @@ import * as actions from '../constants/contact';
 
 const initialState = {
   submitResult: {},
-  error: {},
+  serverError: {},
   contacts: [],
   contact: {
     name: {
@@ -76,28 +76,28 @@ export const contactReducer = (state = initialState, action) => {
     case actions.CREATE_CONTACT_SUCCESS:
       return Object.assign({}, state, { submitResult: action.result, viewFetching: false });
     case actions.CREATE_CONTACT_FAILED:
-      return Object.assign({}, state, { error: action.error, viewFetching: false });
+      return Object.assign({}, state, { serverError: action.error, viewFetching: false });
 
     case actions.UPDATE_CONTACT_REQUEST:
       return Object.assign({}, state, { contactViewVisible: true, viewFetching: true });
     case actions.UPDATE_CONTACT_SUCCESS:
       return Object.assign({}, state, { submitResult: action.result, viewFetching: false });
     case actions.UPDATE_CONTACT_FAILED:
-      return Object.assign({}, state, { error: action.error, viewFetching: false });
+      return Object.assign({}, state, { serverError: action.error, viewFetching: false });
 
     case actions.LIST_CONTACTS_REQUEST:
       return Object.assign({}, state, { viewFetching: true });
     case actions.LIST_CONTACTS_SUCCESS:
       return Object.assign({}, state, { contacts: action.contacts, viewFetching: false });
     case actions.LIST_CONTACTS_FAILED:
-      return Object.assign({}, state, { error: action.error, viewFetching: false });
+      return Object.assign({}, state, { serverError: action.error, viewFetching: false });
 
     case actions.GET_CONTACT_REQUEST:
       return Object.assign({}, state, { contactViewVisible: false, formFetching: true });
     case actions.GET_CONTACT_SUCCESS:
       return Object.assign({}, state, { contact: action.contact, formFetching: false });
     case actions.GET_CONTACT_FAILED:
-      return Object.assign({}, state, { error: action.error, formFetching: false });
+      return Object.assign({}, state, { serverError: action.error, formFetching: false });
 
     case actions.NAME_CHANGE:
       return Object.assign({}, state, { contact: Object.assign({}, state.contact, { name: action.name }) });

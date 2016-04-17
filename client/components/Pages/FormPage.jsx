@@ -6,7 +6,7 @@ import { delegateHandleChange, initNewForm } from '../../actions/form';
 import { createContactRequest, updateContactRequest, getContactRequest } from '../../actions/api';
 import ContentLayout from '../Layouts/Content';
 
-export const FormPage = ({ contact, dispatch, submitResult, formFetching, viewFetching, l10n, location, contactViewVisible }) => {
+export const FormPage = ({ contact, dispatch, submitResult, formFetching, viewFetching, l10n, location, contactViewVisible, serverError }) => {
   const handleChange = (e) => {
     if(e.target.type === 'checkbox')
       return dispatch(delegateHandleChange(e.target.name, e.target.checked));
@@ -33,6 +33,7 @@ export const FormPage = ({ contact, dispatch, submitResult, formFetching, viewFe
         handleSubmit={handleSubmit}
         l10n={l10n}
         formFetching={formFetching}
+        serverError={serverError}
       />
       {contactViewVisible &&
         <ContactView
@@ -55,7 +56,8 @@ FormPage.propTypes = {
   l10n: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
   contactViewVisible: PropTypes.bool.isRequired,
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  serverError: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => {
@@ -65,7 +67,8 @@ const mapStateToProps = (state) => {
     formFetching: state.contactReducer.formFetching,
     viewFetching: state.contactReducer.viewFetching,
     contactViewVisible: state.contactReducer.contactViewVisible,
-    l10n: state.l10nReducer.l10n
+    l10n: state.l10nReducer.l10n,
+    serverError: state.contactReducer.serverError
   };
 };
 

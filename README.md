@@ -14,16 +14,16 @@ http://localhost:1337/
 ---
 ### Functionality
 Validates form on change  
-Sends form values to NodeJS server, saves to Mongo database  
+Sends form values to Node/Koa server, saves to Mongo database  
 Echoes inserted values back  
-Lists all contacts in database  
+Lists all contacts from database  
 Allows updating values  
 Allows changing language  
 
 ---
 ### Issues
-Changing language fast causes error, lifecycle problem  
-Changing update form to create form fast will fill create form with update form values    
+Changing language fast causes error. Better to refactor whole component and load language pack from database  
+Changing update form to create form fast will populate create form with update form values, because they use same model. Need to separate models or cancel update request  
 
 ---
 ### Todos
