@@ -48,6 +48,10 @@ export const mapFormMetaDataToObject = (data) => {
   return mappedData;
 };
 
+export const delay = (time) => {
+  return new Promise(resolve => setTimeout(resolve, time));
+};
+
 export const fetch = ({ path, type, data }) => {
   console.log(`${type} ${SERVER_URI}${path}`);
   return new Promise((resolve, reject) => {

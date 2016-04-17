@@ -2,11 +2,10 @@ import { put, call } from 'redux-saga/effects';
 import { takeLatest } from 'redux-saga';
 import * as actions from '../actions/api';
 import * as constants from '../constants/contact';
-import { fetch } from '../services/helpers';
+import { fetch, delay } from '../services/helpers';
 
 export function* createContact(action) {
-  // Increasing server response time
-  yield new Promise(resolve => setTimeout(resolve, 1000));
+  yield delay(1000);
   try {
     const result = yield call(fetch, { path: '/contact', type: 'POST', data: action.data });
     yield put(actions.createContactSuccess(result));
@@ -19,8 +18,7 @@ export function* watchCreateContact() {
 }
 
 export function* listContacts() {
-  // Increasing server response time
-  yield new Promise(resolve => setTimeout(resolve, 1000));
+  yield delay(1000);
   try {
     const result = yield call(fetch, { path: '/contacts', type: 'GET' });
     yield put(actions.listContactsSuccess(result));
@@ -33,8 +31,7 @@ export function* watchListContacts() {
 }
 
 export function* getContact(action) {
-  // Increasing server response time
-  yield new Promise(resolve => setTimeout(resolve, 1000));
+  yield delay(1000);
   try {
     const result = yield call(fetch, { path: `/contact/${action._id}`, type: 'GET' });
     yield put(actions.getContactSuccess(result));
@@ -47,8 +44,7 @@ export function* watchGetContact() {
 }
 
 export function* updateContact(action) {
-  // Increasing server response time
-  yield new Promise(resolve => setTimeout(resolve, 1000));
+  yield delay(1000);
   try {
     const result = yield call(fetch, { path: '/contact', type: 'PUT', data: action.data });
     yield put(actions.updateContactSuccess(result));
