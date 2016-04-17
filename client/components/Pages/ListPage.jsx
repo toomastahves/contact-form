@@ -6,8 +6,8 @@ import { listContactsRequest } from '../../actions/api';
 import { Table, Thead, Th } from 'reactable';
 import { Link } from 'react-router';
 
-export const ListPage = ({ fetching, contacts, l10n }) => {
-  if(fetching) return <div className='spinner-location'><Spinner /></div>;
+export const ListPage = ({ viewFetching, contacts, l10n }) => {
+  if(viewFetching) return <div className='spinner-location'><Spinner /></div>;
 
   for(let i = 0; i < contacts.length; i++)
     contacts[i].link = <Link to={`/update/${contacts[i]._id}`}>{contacts[i].name}</Link>;
@@ -18,7 +18,7 @@ export const ListPage = ({ fetching, contacts, l10n }) => {
         className='pure-table pure-table-horizontal table-wrap'
         sortable={true}
         defaultSort={{ column: '_id', direction: 'desc' }}
-        noDataText='No matching records found.'
+        noDataText={l10n.NO_RECORDS}
         itemsPerPage={10} pageButtonLimit={10}
         data={contacts}
         filterable={['link', 'email', 'phone']}
@@ -41,14 +41,14 @@ export const ListPage = ({ fetching, contacts, l10n }) => {
 
 ListPage.propTypes = {
   contacts: PropTypes.array.isRequired,
-  fetching: PropTypes.bool.isRequired,
+  viewFetching: PropTypes.bool.isRequired,
   l10n: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => {
   return {
     contacts: state.contactReducer.contacts,
-    fetching: state.contactReducer.fetching,
+    viewFetching: state.contactReducer.viewFetching,
     l10n: state.l10nReducer.l10n
   };
 };

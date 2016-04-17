@@ -1,11 +1,11 @@
 import React, { PropTypes } from 'react';
 import Spinner from './Spinner';
 
-export const ContactView = ({ submitResult, handleUpdate, fetching, l10n, location }) => {
+export const ContactView = ({ submitResult, handleUpdate, viewFetching, l10n, location }) => {
   const buttonVisibility = location.pathname.split('/')[1] === 'update' ? { visibility: 'hidden' } : {};
   return (
     <div>
-      {fetching ?
+      {viewFetching ?
         <div className='spinner-location'>
           <Spinner />
         </div> :
@@ -58,7 +58,7 @@ export const ContactView = ({ submitResult, handleUpdate, fetching, l10n, locati
 ContactView.propTypes = {
   submitResult: PropTypes.object.isRequired,
   handleUpdate: PropTypes.func.isRequired,
-  fetching: PropTypes.bool.isRequired,
+  viewFetching: PropTypes.bool.isRequired,
   l10n: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired
 };

@@ -4,7 +4,6 @@ const initialState = {
   submitResult: {},
   error: {},
   contacts: [],
-  fetching: false,
   contact: {
     name: {
       value: '',
@@ -62,7 +61,9 @@ const initialState = {
       touched: false
     }
   },
-  contactViewVisible: false
+  contactViewVisible: false,
+  formFetching: false,
+  viewFetching: false
 };
 
 export const contactReducer = (state = initialState, action) => {
@@ -71,32 +72,32 @@ export const contactReducer = (state = initialState, action) => {
       return Object.assign({}, initialState);
 
     case actions.CREATE_CONTACT_REQUEST:
-      return Object.assign({}, state, { contactViewVisible: true, fetching: true });
+      return Object.assign({}, state, { contactViewVisible: true, viewFetching: true });
     case actions.CREATE_CONTACT_SUCCESS:
-      return Object.assign({}, state, { submitResult: action.result, fetching: false });
+      return Object.assign({}, state, { submitResult: action.result, viewFetching: false });
     case actions.CREATE_CONTACT_FAILED:
-      return Object.assign({}, state, { error: action.error, fetching: false });
+      return Object.assign({}, state, { error: action.error, viewFetching: false });
 
     case actions.UPDATE_CONTACT_REQUEST:
-      return Object.assign({}, state, { contactViewVisible: true, fetching: true });
+      return Object.assign({}, state, { contactViewVisible: true, viewFetching: true });
     case actions.UPDATE_CONTACT_SUCCESS:
-      return Object.assign({}, state, { submitResult: action.result, fetching: false });
+      return Object.assign({}, state, { submitResult: action.result, viewFetching: false });
     case actions.UPDATE_CONTACT_FAILED:
-      return Object.assign({}, state, { error: action.error, fetching: false });
+      return Object.assign({}, state, { error: action.error, viewFetching: false });
 
     case actions.LIST_CONTACTS_REQUEST:
-      return Object.assign({}, state, { fetching: true });
+      return Object.assign({}, state, { viewFetching: true });
     case actions.LIST_CONTACTS_SUCCESS:
-      return Object.assign({}, state, { contacts: action.contacts, fetching: false });
+      return Object.assign({}, state, { contacts: action.contacts, viewFetching: false });
     case actions.LIST_CONTACTS_FAILED:
-      return Object.assign({}, state, { error: action.error, fetching: false });
+      return Object.assign({}, state, { error: action.error, viewFetching: false });
 
     case actions.GET_CONTACT_REQUEST:
-      return Object.assign({}, state, { contactViewVisible: false, fetching: true });
+      return Object.assign({}, state, { contactViewVisible: false, formFetching: true });
     case actions.GET_CONTACT_SUCCESS:
-      return Object.assign({}, state, { contact: action.contact, fetching: false });
+      return Object.assign({}, state, { contact: action.contact, formFetching: false });
     case actions.GET_CONTACT_FAILED:
-      return Object.assign({}, state, { error: action.error, fetching: false });
+      return Object.assign({}, state, { error: action.error, formFetching: false });
 
     case actions.NAME_CHANGE:
       return Object.assign({}, state, { contact: Object.assign({}, state.contact, { name: action.name }) });

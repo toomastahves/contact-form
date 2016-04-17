@@ -22,5 +22,6 @@ export default {
   MENU_HOME: 'Home',
   MENU_CREATE: 'Create',
   MENU_LIST: 'List',
-  UPDATE: 'Update'
+  UPDATE: 'Update',
+  NO_RECORDS: 'No matching records found.'
 };

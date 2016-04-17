@@ -22,5 +22,6 @@ export default {
   MENU_HOME: 'Avaleht',
   MENU_CREATE: 'Loo',
   MENU_LIST: 'Nimekiri',
-  UPDATE: 'Muuda'
+  UPDATE: 'Muuda',
+  NO_RECORDS: 'Kontaktandmed puuduvad'
 };

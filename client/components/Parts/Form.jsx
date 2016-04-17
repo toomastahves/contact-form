@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 import Spinner from './Spinner';
 
-export const Form = ({ handleChange, contact, handleSubmit, l10n, fetching }) => {
-  if(fetching) return <div className='spinner-location'><Spinner /></div>;
+export const Form = ({ handleChange, contact, handleSubmit, l10n, formFetching }) => {
+  if(formFetching) return <div className='spinner-location'><Spinner /></div>;
 
   const {
     name, phone, email, billing_address_field1, billing_address_field2, billing_address_field3,
@@ -181,7 +181,7 @@ Form.propTypes = {
   contact: PropTypes.object.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   l10n: PropTypes.object.isRequired,
-  fetching: PropTypes.bool.isRequired
+  formFetching: PropTypes.bool.isRequired
 };
 
 export default Form;

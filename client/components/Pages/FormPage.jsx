@@ -6,7 +6,7 @@ import { delegateHandleChange, initNewForm } from '../../actions/form';
 import { createContactRequest, updateContactRequest, getContactRequest } from '../../actions/api';
 import ContentLayout from '../Layouts/Content';
 
-export const FormPage = ({ contact, dispatch, submitResult, fetching, l10n, location, contactViewVisible }) => {
+export const FormPage = ({ contact, dispatch, submitResult, formFetching, viewFetching, l10n, location, contactViewVisible }) => {
   const handleChange = (e) => {
     if(e.target.type === 'checkbox')
       return dispatch(delegateHandleChange(e.target.name, e.target.checked));
@@ -32,13 +32,13 @@ export const FormPage = ({ contact, dispatch, submitResult, fetching, l10n, loca
         contact={contact}
         handleSubmit={handleSubmit}
         l10n={l10n}
-        fetching={fetching}
+        formFetching={formFetching}
       />
       {contactViewVisible &&
         <ContactView
           handleUpdate={handleUpdate}
           submitResult={submitResult}
-          fetching={fetching}
+          viewFetching={viewFetching}
           l10n={l10n}
           location={location}
         />
@@ -50,7 +50,8 @@ export const FormPage = ({ contact, dispatch, submitResult, fetching, l10n, loca
 FormPage.propTypes = {
   contact: PropTypes.object.isRequired,
   submitResult: PropTypes.object.isRequired,
-  fetching: PropTypes.bool.isRequired,
+  formFetching: PropTypes.bool.isRequired,
+  viewFetching: PropTypes.bool.isRequired,
   l10n: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
   contactViewVisible: PropTypes.bool.isRequired,
@@ -61,7 +62,8 @@ const mapStateToProps = (state) => {
   return {
     contact: state.contactReducer.contact,
     submitResult: state.contactReducer.submitResult,
-    fetching: state.contactReducer.fetching,
+    formFetching: state.contactReducer.formFetching,
+    viewFetching: state.contactReducer.viewFetching,
     contactViewVisible: state.contactReducer.contactViewVisible,
     l10n: state.l10nReducer.l10n
   };
