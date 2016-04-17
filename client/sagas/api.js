@@ -1,45 +1,35 @@
-import { put, call, fork, take } from 'redux-saga/effects';
-import {
-  createContactSuccess, createContactFailed, listContactsSuccess, listContactsFailed,
-  getContactSuccess, getContactFailed, updateContactSuccess, updateContactFailed
-} from '../actions/api';
-import { CREATE_CONTACT_REQUEST, LIST_CONTACTS_REQUEST, GET_CONTACT_REQUEST, UPDATE_CONTACT_REQUEST } from '../constants/contact';
+import { put, call } from 'redux-saga/effects';
+import { takeLatest } from 'redux-saga';
+import * as actions from '../actions/api';
+import * as constants from '../constants/contact';
 import { fetch } from '../services/helpers';
 
-export function* createContact(data) {
+export function* createContact(action) {
   // Increasing server response time
   yield new Promise(resolve => setTimeout(resolve, 1000));
   try {
-    const result = yield call(fetch, { path: '/contact', type: 'POST', data });
-    yield put(createContactSuccess(result));
+    const result = yield call(fetch, { path: '/contact', type: 'POST', data: action.data });
+    yield put(actions.createContactSuccess(result));
   } catch(error) {
-    yield put(createContactFailed(error));
+    yield put(actions.createContactFailed(error));
   }
 }
 export function* watchCreateContact() {
-  // watching contact creation
-  while(true) {
-    const form = yield take(CREATE_CONTACT_REQUEST);
-    yield fork(createContact, form.data);
-  }
+  yield* takeLatest(constants.CREATE_CONTACT_REQUEST, createContact);
 }
 
-export function* listContacts(data) {
+export function* listContacts() {
   // Increasing server response time
   yield new Promise(resolve => setTimeout(resolve, 1000));
   try {
-    const result = yield call(fetch, { path: '/contacts', type: 'GET', data });
-    yield put(listContactsSuccess(result));
+    const result = yield call(fetch, { path: '/contacts', type: 'GET' });
+    yield put(actions.listContactsSuccess(result));
   } catch(error) {
-    yield put(listContactsFailed(error));
+    yield put(actions.listContactsFailed(error));
   }
 }
 export function* watchListContacts() {
-  // watching contact creation
-  while(true) {
-    const form = yield take(LIST_CONTACTS_REQUEST);
-    yield fork(listContacts, form.data);
-  }
+  yield* takeLatest(constants.LIST_CONTACTS_REQUEST, listContacts);
 }
 
 export function* getContact(action) {
@@ -47,17 +37,13 @@ export function* getContact(action) {
   yield new Promise(resolve => setTimeout(resolve, 1000));
   try {
     const result = yield call(fetch, { path: `/contact/${action._id}`, type: 'GET' });
-    yield put(getContactSuccess(result));
+    yield put(actions.getContactSuccess(result));
   } catch(error) {
-    yield put(getContactFailed(error));
+    yield put(actions.getContactFailed(error));
   }
 }
 export function* watchGetContact() {
-  // watching contact creation
-  while(true) {
-    const action = yield take(GET_CONTACT_REQUEST);
-    yield fork(getContact, action);
-  }
+  yield* takeLatest(constants.GET_CONTACT_REQUEST, getContact);
 }
 
 export function* updateContact(action) {
@@ -65,15 +51,11 @@ export function* updateContact(action) {
   yield new Promise(resolve => setTimeout(resolve, 1000));
   try {
     const result = yield call(fetch, { path: '/contact', type: 'PUT', data: action.data });
-    yield put(updateContactSuccess(result));
+    yield put(actions.updateContactSuccess(result));
   } catch(error) {
-    yield put(updateContactFailed(error));
+    yield put(actions.updateContactFailed(error));
   }
 }
 export function* watchUpdateContact() {
-  // watching contact creation
-  while(true) {
-    const action = yield take(UPDATE_CONTACT_REQUEST);
-    yield fork(updateContact, action);
-  }
+  yield* takeLatest(constants.UPDATE_CONTACT_REQUEST, updateContact);
 }

@@ -49,8 +49,7 @@ export const mapFormMetaDataToObject = (data) => {
 };
 
 export const fetch = ({ path, type, data }) => {
-  console.log(`${SERVER_URI}${path}`);
-  console.log(data);
+  console.log(`${type} ${SERVER_URI}${path}`);
   return new Promise((resolve, reject) => {
     const req = new XMLHttpRequest();
     req.open(type, `${SERVER_URI}${path}`);
