@@ -18,5 +18,9 @@ export default {
   SAME_ADDRESS_FALSE: 'Kohaletoimetamine erinevale aadressile',
   ACCEPT_TERMS: 'Olen tingimustega tutvunud',
   ACCEPT_TERMS_ERROR: 'Peab tingimustega nõustuma',
-  SAVE_BUTTON: 'Salvesta'
+  SAVE_BUTTON: 'Salvesta',
+  MENU_HOME: 'Avaleht',
+  MENU_CREATE: 'Loo',
+  MENU_LIST: 'Nimekiri',
+  UPDATE: 'Muuda'
 };

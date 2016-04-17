@@ -87,16 +87,16 @@ export const contactReducer = (state = initialState, action) => {
     case actions.LIST_CONTACTS_REQUEST:
       return Object.assign({}, state, { fetching: true });
     case actions.LIST_CONTACTS_SUCCESS:
-      return Object.assign({}, state, { fetching: false, contacts: action.contacts });
+      return Object.assign({}, state, { contacts: action.contacts, fetching: false });
     case actions.LIST_CONTACTS_FAILED:
-      return Object.assign({}, state, { fetching: false, error: action.error });
+      return Object.assign({}, state, { error: action.error, fetching: false });
 
     case actions.GET_CONTACT_REQUEST:
       return Object.assign({}, state, { contactViewVisible: false, fetching: true });
     case actions.GET_CONTACT_SUCCESS:
-      return Object.assign({}, state, { fetching: false, contact: action.contact });
+      return Object.assign({}, state, { contact: action.contact, fetching: false });
     case actions.GET_CONTACT_FAILED:
-      return Object.assign({}, state, { fetching: false, error: action.error });
+      return Object.assign({}, state, { error: action.error, fetching: false });
 
     case actions.NAME_CHANGE:
       return Object.assign({}, state, { contact: Object.assign({}, state.contact, { name: action.name }) });

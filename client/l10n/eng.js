@@ -18,5 +18,9 @@ export default {
   SAME_ADDRESS_FALSE: 'Shipping address different from billing',
   ACCEPT_TERMS: 'I accept terms',
   ACCEPT_TERMS_ERROR: 'Must accept terms',
-  SAVE_BUTTON: 'Save'
+  SAVE_BUTTON: 'Save',
+  MENU_HOME: 'Home',
+  MENU_CREATE: 'Create',
+  MENU_LIST: 'List',
+  UPDATE: 'Update'
 };

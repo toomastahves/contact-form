@@ -7,6 +7,7 @@
 }
 .textinput {
   border-radius: 25px;
+  border: 0;
 }
 .formbutton {
   background-color: rgb(106, 118, 179);
@@ -30,4 +31,16 @@ input, select {
 
 input[type='radio'], input[type='checkbox'] {
   width: auto;
+}
+
+.form-input-success {
+  border: 1px;
+  border-style: solid;
+  border-color: green;
+}
+
+.form-input-error {
+  border: 1px;
+  border-style: solid;
+  border-color: red;
 }

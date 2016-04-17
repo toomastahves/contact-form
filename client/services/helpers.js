@@ -48,17 +48,6 @@ export const mapFormMetaDataToObject = (data) => {
   return mappedData;
 };
 
-export const buttonStatus = (contact) => {
-  const { name, phone, email, billing_address_field1, billing_address_field2, billing_address_field3,
-    same_address, shipping_address_field1, shipping_address_field2, shipping_address_field3, accept_terms } = contact;
-
-  const status = name.valid && (phone.valid || email.valid) &&
-    billing_address_field1.valid && billing_address_field2.valid && billing_address_field3.valid && accept_terms.valid &&
-    (!same_address.value ? shipping_address_field1.valid && shipping_address_field2.valid && shipping_address_field3.valid : true);
-
-  return status;
-};
-
 export const fetch = ({ path, type, data }) => {
   console.log(`${SERVER_URI}${path}`);
   console.log(data);

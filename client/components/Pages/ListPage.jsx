@@ -6,7 +6,7 @@ import { listContactsRequest } from '../../actions/api';
 import { Table, Thead, Th } from 'reactable';
 import { Link } from 'react-router';
 
-export const ListPage = ({ fetching, contacts }) => {
+export const ListPage = ({ fetching, contacts, l10n }) => {
   if(fetching) return <div className='spinner-location'><Spinner /></div>;
 
   for(let i = 0; i < contacts.length; i++)
@@ -25,13 +25,13 @@ export const ListPage = ({ fetching, contacts }) => {
       >
         <Thead>
           <Th column='link'>
-            <strong className='name-header'>{'Name'}</strong>
+            <strong className='name-header'>{l10n.NAME}</strong>
           </Th>
           <Th column='email'>
-            <strong className='email-header'>{'E-mail'}</strong>
+            <strong className='email-header'>{l10n.EMAIL}</strong>
           </Th>
           <Th column='phone'>
-            <strong className='phone-header'>{'Phone'}</strong>
+            <strong className='phone-header'>{l10n.PHONE}</strong>
           </Th>
         </Thead>
       </Table>
@@ -41,13 +41,15 @@ export const ListPage = ({ fetching, contacts }) => {
 
 ListPage.propTypes = {
   contacts: PropTypes.array.isRequired,
-  fetching: PropTypes.bool.isRequired
+  fetching: PropTypes.bool.isRequired,
+  l10n: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => {
   return {
     contacts: state.contactReducer.contacts,
-    fetching: state.contactReducer.fetching
+    fetching: state.contactReducer.fetching,
+    l10n: state.l10nReducer.l10n
   };
 };
 

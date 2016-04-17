@@ -24,10 +24,10 @@
 /**
 * Larger layout
 */
-@media (min-width: 800px) {
+@media (min-width: 640px) {
   .container {
     margin: auto;
-    max-width: 800px;
+    max-width: 640px;
   }
   .form-set {
     flex-direction: row;

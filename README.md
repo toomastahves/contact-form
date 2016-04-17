@@ -13,10 +13,12 @@ http://localhost:1337/
 
 ---
 ### Functionality
-Displays form  
-Validates form  
-Sends form values to server  
-Echoes back form values  
+Validates form on change  
+Sends form values to NodeJS server, saves to Mongo database  
+Echoes inserted values back  
+Lists all contacts in database  
+Allows updating values  
+Allows changing language  
 
 ---
 ### Issues
@@ -26,4 +28,4 @@ Changing update form to create form fast will fill create form with update form 
 ---
 ### Todos
 Write more unit tests  
-Save form values automatically on change, add throttle and execute through saga  
+Save form values automatically on change  

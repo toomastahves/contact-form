@@ -47,7 +47,7 @@ export const ContactView = ({ submitResult, handleUpdate, fetching, l10n, locati
             <div className='view-item'>{submitResult.shipping_address_field3}</div>
           </div>
           <div className='view-set' style={buttonVisibility}>
-            <button className='view-button formbutton' onClick={handleUpdate} value={submitResult._id}>{'Update'}</button>
+            <button className='view-button formbutton' onClick={handleUpdate} value={submitResult._id}>{l10n.UPDATE}</button>
           </div>
         </div>
     }

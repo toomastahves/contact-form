@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import { buttonStatus } from '../../services/helpers';
 import Spinner from './Spinner';
 
 export const Form = ({ handleChange, contact, handleSubmit, l10n, fetching }) => {
@@ -9,6 +8,14 @@ export const Form = ({ handleChange, contact, handleSubmit, l10n, fetching }) =>
     name, phone, email, billing_address_field1, billing_address_field2, billing_address_field3,
     same_address, shipping_address_field1, shipping_address_field2, shipping_address_field3, accept_terms
   } = contact;
+
+  const submitButtonEnabled = name.valid && (phone.valid || email.valid) &&
+    billing_address_field1.valid && billing_address_field2.valid && billing_address_field3.valid && accept_terms.valid &&
+    (!same_address.value ? shipping_address_field1.valid && shipping_address_field2.valid && shipping_address_field3.valid : true);
+
+  const inputClass = (field, value = true) => {
+    return field.valid ? field.touched && value && 'form-input-success' : field.touched && value && 'form-input-error';
+  };
 
   return (
     <div className='container'>
@@ -26,7 +33,7 @@ export const Form = ({ handleChange, contact, handleSubmit, l10n, fetching }) =>
             <label htmlFor='name'>{l10n.NAME}</label>
           </div>
           <div className='form-input'>
-            <input className='textinput' value={name.value} type='text' name='name' id='name' />
+            <input className={`textinput ${inputClass(name)}`} value={name.value} type='text' name='name' id='name' />
           </div>
         </div>
 
@@ -41,7 +48,7 @@ export const Form = ({ handleChange, contact, handleSubmit, l10n, fetching }) =>
             <label htmlFor='phone'>{l10n.PHONE}</label>
           </div>
           <div className='form-input'>
-            <input className='textinput' value={phone.value} type='text' name='phone' id='phone' placeholder='+372' />
+            <input className={`textinput ${inputClass(phone, phone.value)}`} value={phone.value} type='text' name='phone' id='phone' placeholder='+372' />
           </div>
         </div>
 
@@ -53,7 +60,7 @@ export const Form = ({ handleChange, contact, handleSubmit, l10n, fetching }) =>
             <label htmlFor='email'>{l10n.EMAIL}</label>
           </div>
           <div className='form-input'>
-            <input className='textinput' value={email.value} type='text' name='email' id='email' />
+            <input className={`textinput ${inputClass(email, email.value)}`} value={email.value} type='text' name='email' id='email' />
           </div>
         </div>
 
@@ -65,7 +72,7 @@ export const Form = ({ handleChange, contact, handleSubmit, l10n, fetching }) =>
             <label htmlFor='billing_address_field1'>{l10n.ADDRESS_FIELD1}</label>
           </div>
           <div className='form-input'>
-            <input className='textinput' value={billing_address_field1.value} type='text' name='billing_address_field1' id='billing_address_field1' />
+            <input className={`textinput ${inputClass(billing_address_field1)}`} value={billing_address_field1.value} type='text' name='billing_address_field1' id='billing_address_field1' />
           </div>
         </div>
 
@@ -77,7 +84,7 @@ export const Form = ({ handleChange, contact, handleSubmit, l10n, fetching }) =>
             <label htmlFor='billing_address_field2'>{l10n.ADDRESS_FIELD2}</label>
           </div>
           <div className='form-input'>
-            <input className='textinput' value={billing_address_field2.value} type='text' name='billing_address_field2' id='billing_address_field2' />
+            <input className={`textinput ${inputClass(billing_address_field2)}`} value={billing_address_field2.value} type='text' name='billing_address_field2' id='billing_address_field2' />
           </div>
         </div>
 
@@ -89,7 +96,7 @@ export const Form = ({ handleChange, contact, handleSubmit, l10n, fetching }) =>
             <label htmlFor='billing_address_field3'>{l10n.ADDRESS_FIELD3}</label>
           </div>
           <div className='form-input'>
-            <select className='textinput' value={billing_address_field3.value} name='billing_address_field3' id='billing_address_field3' >
+            <select className={`textinput ${inputClass(billing_address_field3)}`} value={billing_address_field3.value} name='billing_address_field3' id='billing_address_field3' >
               <option value=''>{l10n.ADDRESS_FIELD3_EMPTY}</option>
               <option value='Harjumaa'>{'Harjumaa'}</option>
             </select>
@@ -117,7 +124,7 @@ export const Form = ({ handleChange, contact, handleSubmit, l10n, fetching }) =>
                 <label htmlFor='shipping_address_field1'>{l10n.ADDRESS_FIELD1}</label>
               </div>
               <div className='form-input'>
-                <input className='textinput' value={shipping_address_field1.value} type='text' name='shipping_address_field1' id='shipping_address_field1' />
+                <input className={`textinput ${inputClass(shipping_address_field1)}`} value={shipping_address_field1.value} type='text' name='shipping_address_field1' id='shipping_address_field1' />
               </div>
             </div>
 
@@ -129,7 +136,7 @@ export const Form = ({ handleChange, contact, handleSubmit, l10n, fetching }) =>
                 <label htmlFor='shipping_address_field2'>{l10n.ADDRESS_FIELD2}</label>
               </div>
               <div className='form-input'>
-                <input className='textinput' value={shipping_address_field2.value} type='text' name='shipping_address_field2' id='shipping_address_field2' />
+                <input className={`textinput ${inputClass(shipping_address_field2)}`} value={shipping_address_field2.value} type='text' name='shipping_address_field2' id='shipping_address_field2' />
               </div>
             </div>
 
@@ -141,7 +148,7 @@ export const Form = ({ handleChange, contact, handleSubmit, l10n, fetching }) =>
                 <label htmlFor='shipping_address_field3'>{l10n.ADDRESS_FIELD3}</label>
               </div>
               <div className='form-input'>
-                <select className='textinput' value={shipping_address_field3.value} name='shipping_address_field3' id='shipping_address_field3' >
+                <select className={`textinput ${inputClass(shipping_address_field3)}`} value={shipping_address_field3.value} name='shipping_address_field3' id='shipping_address_field3' >
                   <option value=''>{l10n.ADDRESS_FIELD3_EMPTY}</option>
                   <option value='Harjumaa'>{'Harjumaa'}</option>
                 </select>
@@ -161,7 +168,7 @@ export const Form = ({ handleChange, contact, handleSubmit, l10n, fetching }) =>
         </div>
 
         <div className='form-set'>
-          <button className='formbutton' type='submit' disabled={!buttonStatus(contact)}>{l10n.SAVE_BUTTON}</button>
+          <button className='formbutton' type='submit' disabled={!submitButtonEnabled}>{l10n.SAVE_BUTTON}</button>
         </div>
 
       </form>
